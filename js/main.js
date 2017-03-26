@@ -15,6 +15,7 @@ window.onload = function() {
 function preload() {
 
     Tank.game.load.image('sky', 'assets/sky.png');
+    Tank.game.load.image('star', 'assets/star.png');
 }
 
 function create() {
@@ -24,6 +25,7 @@ function create() {
     Tank.game.physics.startSystem(Phaser.Physics.ARCADE);
 
     Tank.game.add.sprite(0, 0, 'sky');
+      Tank.game.add.sprite(0,0,'star');
 }
 
 function update() {
