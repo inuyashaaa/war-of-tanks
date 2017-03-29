@@ -17,6 +17,7 @@ Game.Preloader.prototype = {
 
         //Load player
         this.load.image('player1', 'assets/images/tank_player1_up_c0_t1_s3.png');
+        this.load.image('player2', 'assets/images/tank_armor_up_c1_t2.png');
     },
 
     create: function() {
