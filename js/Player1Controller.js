@@ -14,16 +14,16 @@ class Player1Controller {
         this.sprite.body.velocity.y = 0;
         //Thiet lap viec di chuyen cua tank
         if (keyboard.isDown(this.configs.up)) {
-            this.sprite.scale.setTo(1, 1);
+            this.sprite.angle = 0;
             this.sprite.body.velocity.y = -Player1Controller.TANK_SPEED;
         } else if (keyboard.isDown(this.configs.down)) {
-            this.sprite.scale.setTo(-1, -1);
+            this.sprite.angle = 180;
             this.sprite.body.velocity.y = Player1Controller.TANK_SPEED;
         } else if (keyboard.isDown(this.configs.left)) {
-            this.sprite.scale.setTo(1);
+            this.sprite.angle = -90;
             this.sprite.body.velocity.x = -Player1Controller.TANK_SPEED;
         } else if (keyboard.isDown(this.configs.right)) {
-            this.sprite.scale.setTo(1, -1);
+            this.sprite.angle = 90;
             this.sprite.body.velocity.x = Player1Controller.TANK_SPEED;
         } else {
             this.sprite.body.velocity.x = 0;
