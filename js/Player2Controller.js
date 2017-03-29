@@ -56,4 +56,4 @@ class Player2Controller {
     }
 }
 
-Player2Controller.TANK_SPEED = 100;
+Player2Controller.TANK_SPEED = 200;

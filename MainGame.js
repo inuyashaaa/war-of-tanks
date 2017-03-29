@@ -41,7 +41,7 @@ Game.MainGame.prototype = {
         players.push(
             new Player2Controller(
                 700,
-                600, {
+                550, {
                     up: Phaser.Keyboard.W,
                     down: Phaser.Keyboard.S,
                     left: Phaser.Keyboard.A,
@@ -56,6 +56,7 @@ Game.MainGame.prototype = {
     update: function(game) {
         this.physics.arcade.collide(player1Group, layer);
         this.physics.arcade.collide(player2Group, layer);
+        this.physics.arcade.collide(player1Group,player2Group);
         players.forEach(
             function(ship) {
                 ship.update();
