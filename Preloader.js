@@ -14,6 +14,9 @@ Game.Preloader.prototype = {
         this.load.tilemap('map', 'assets/maps/level1.json', null, Phaser.Tilemap.TILED_JSON);
         this.load.image('wall_brick', 'assets/images/wall_brick.png');
         this.load.image('wall_steel', 'assets/images/wall_steel.png');
+
+        //Load player
+        this.load.image('player1', 'assets/images/tank_player1_up_c0_t1_s3.png');
     },
 
     create: function() {
