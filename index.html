@@ -4,21 +4,23 @@
     <meta charset="utf-8">
     <title>War Of Tanks</title>
     <script src="libs/phaser.min.js"></script>
-    <script src="js/Player1Controller.js"></script>
-    <script src="js/Player2Controller.js"></script>
     <script src="Boot.js"></script>
     <script src="Preloader.js"></script>
-    <!-- <script src="MainMenu.js"></script> -->
+    <script src="MainMenu.js"></script>
     <script src="MainGame.js"></script>
+    <script src="js/Player1Controller.js"></script>
+    <script src="js/Player2Controller.js"></script>
+    <script src="js/BulletPlayer1Controller.js"></script>
+    <script src="js/BulletPlayer2Controller.js"></script>
   </head>
   <body>
     <script type="text/javascript">
       window.onload = function() {
         var game = new Phaser.Game(960, 640, Phaser.CANVAS,'');
-        game.state.add('Boot', Game.Boot);
-        game.state.add('Preloader', Game.Preloader);
-        // game.state.add('MainMenu', Game.MainMenu);
-        game.state.add('MainGame', Game.MainGame);
+        game.state.add('Boot', Boot);
+        game.state.add('Preloader', Preloader);
+        game.state.add('MainMenu', MainMenu);
+        game.state.add('MainGame', MainGame);
 
         game.state.start('Boot');
       };

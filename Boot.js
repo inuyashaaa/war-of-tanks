@@ -1,18 +1,16 @@
-var Game = {};
-
-Game.Boot = function(game) {
+Boot = function(game) {
 
 };
 
-Game.Boot.prototype = {
-    init: function() {
+Boot.prototype = {
+    init: function(game) {
         this.input.maxPointers = 1;
         this.stage.disableVisibilityChange = true; //Về xem thêm
     },
-    preloader: function() {
-        this.load.image('preloaderBar', 'assets/preloader.png');
+    preloader: function(game) {
+        game.load.image('preloaderBar', 'assets/preloader.png');
     },
-    create: function(){
-      this.state.start('Preloader');
+    create: function(game) {
+        game.state.start('Preloader');
     }
 };
