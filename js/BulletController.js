@@ -1,0 +1,23 @@
+class BulletController {
+    constructor(position, direction, physicsGroup, spriteName) {
+        this.sprite = physicsGroup.create(position.x, position.y, spriteName);
+        this.sprite.anchor = new Phaser.Point(0.5, 0.5);
+        this.sprite.body.setSize(16, 16);
+        this.sprite.checkWorldBounds = true;
+        this.sprite.outOfBoundsKill = true;
+        this.sprite.body.velocity = direction.setMagnitude(BulletController.BULLET_SPEED);
+        bullets.push(this);
+        this.sprite.oneKilled = this.oneKilled;
+    }
+
+    update() {
+        if (!this.sprite.alive) {
+            var index = bullets.indexOf(this);
+            if (index != -1) {
+                bullets.splice(index, 1);
+            }
+        }
+    }
+}
+
+BulletController.BULLET_SPEED = 250;
