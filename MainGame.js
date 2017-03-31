@@ -11,8 +11,11 @@ var bullets = [];
 var bulletPlayer1Group;
 var bulletPlayer2Group;
 var wallbrickGroup;
-var hit2;
-var shot;
+
+var healthBarP1;
+var healthBarP2;
+var textHealth;
+
 MainGame.prototype = {
     create: function(game) {
         game.stage.backgroundColor = '#000000';
@@ -35,6 +38,9 @@ MainGame.prototype = {
         player1Group = game.add.physicsGroup();
         player2Group = game.add.physicsGroup();
 
+        //Group health
+        healthBarGroup = game.add.physicsGroup();
+
         //Tạo group cho gạch
         wallbrickGroup = game.add.group();
         wallbrickGroup.enableBody = true;
@@ -55,30 +61,51 @@ MainGame.prototype = {
             new Player1Controller(
                 200,
                 200, {
-                  up: Phaser.Keyboard.W,
-                  down: Phaser.Keyboard.S,
-                  left: Phaser.Keyboard.A,
-                  right: Phaser.Keyboard.D,
-                  fire: Phaser.Keyboard.F,
-                  cooldown: 0.5
+                    up: Phaser.Keyboard.W,
+                    down: Phaser.Keyboard.S,
+                    left: Phaser.Keyboard.A,
+                    right: Phaser.Keyboard.D,
+                    fire: Phaser.Keyboard.F,
+                    cooldown: 0.5
                 },
                 game
             )
         );
         players.push(
             new Player2Controller(
-                700,
-                550, {
-                  up: Phaser.Keyboard.UP,
-                  down: Phaser.Keyboard.DOWN,
-                  left: Phaser.Keyboard.LEFT,
-                  right: Phaser.Keyboard.RIGHT,
-                  fire: Phaser.Keyboard.SPACEBAR,
-                  cooldown: 0.5
+                500,
+                500, {
+                    up: Phaser.Keyboard.UP,
+                    down: Phaser.Keyboard.DOWN,
+                    left: Phaser.Keyboard.LEFT,
+                    right: Phaser.Keyboard.RIGHT,
+                    fire: Phaser.Keyboard.SPACEBAR,
+                    cooldown: 0.5
                 },
                 game
             )
         );
+
+        //health
+        textHealth = game.add.text(20, 0, 'P1', {
+            fontSize: '8px',
+            fill: '#000000'
+        });
+        textHealth = game.add.text(615, 0, 'P2', {
+            fontSize: '8px',
+            fill: '#000000'
+        });
+        healthb = game.add.image('healthBar');
+        healthbbg = game.add.image('healthBarBG');
+        healthBarP1 = new HealthBarController(
+            new Phaser.Point(50, 10),
+            players[0]
+        )
+        healthBarP2 = new HealthBarController(
+            new Phaser.Point(650, 10),
+            players[1]
+        )
+
     },
 
     update: function(game) {
@@ -92,6 +119,10 @@ MainGame.prototype = {
                 ship.update();
             }
         );
+
+        healthBarP1.update();
+        healthBarP2.update();
+
         bullets.forEach(function(bullet) {
             if (bullet.update && typeof bullet.update == "function") {
                 bullet.update();
@@ -120,14 +151,14 @@ MainGame.prototype = {
         );
 
         game.physics.arcade.overlap(
-          bulletPlayer1Group,
-          player2Group,
-          onBullet1HitPlayer2
+            bulletPlayer1Group,
+            player2Group,
+            onBullet1HitPlayer2
         )
         game.physics.arcade.overlap(
-          bulletPlayer2Group,
-          player1Group,
-          onBullet2HitPlayer1
+            bulletPlayer2Group,
+            player1Group,
+            onBullet2HitPlayer1
         )
     },
     render: function(game) {
@@ -141,20 +172,23 @@ function onBulletHitWallBrick(bulletPlayerGroup, wallbrickGroup) {
     wallbrickGroup.kill();
     hit2.play();
 }
+
 function onBulletHitLayer(bulletPlayerGroup, layer) {
     bulletPlayerGroup.kill();
 }
+
 function onBullet1HitPlayer2(bulletPlayer1Sprite, player2Sprite) {
     bulletPlayer1Sprite.kill();
     player2Sprite.damage(1);
-    if(!player2Sprite.alive){
-      boom.play();
+    if (!player2Sprite.alive) {
+        boom.play();
     }
 }
+
 function onBullet2HitPlayer1(bulletPlayer2Sprite, player1Sprite) {
     bulletPlayer2Sprite.kill();
     player1Sprite.damage(1);
-    if(!player1Sprite.alive){
-      boom.play();
+    if (!player1Sprite.alive) {
+        boom.play();
     }
 }

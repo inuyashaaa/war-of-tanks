@@ -27,6 +27,11 @@ Preloader.prototype = {
         game.load.audio('hit2','assets/sound/bullet_hit_2.ogg');
         game.load.audio('shot','assets/sound/bullet_shot.ogg');
 
+        //laod health
+        game.load.image('healthBar','assets/images/healthBar.png');
+        game.load.image('healthBarBG','assets/images/healthBarBG.png');
+
+
     },
 
     create: function(game) {
