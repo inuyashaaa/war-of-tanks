@@ -14,7 +14,6 @@ class HealthBarController {
   }
 
   update() {
-    console.log(this.fatherObject.sprite.health);
     this.healthBarBG.scale.setTo(this.fatherObject.sprite.health / 10, 1);
     this.remove();
   }
