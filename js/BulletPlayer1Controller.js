@@ -1,5 +1,8 @@
 class BulletPlayer1Controller extends BulletController{
-  constructor(position, direction){
-    super(position, direction, bulletPlayer1Group, 'bullet');
+  constructor(position, direction, angle){
+    super(position, direction, bulletPlayer1Group, 'bullet', angle);
+  }
+  update(){
+    super.update();
   }
 }

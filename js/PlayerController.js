@@ -8,6 +8,7 @@ class PlayerController {
         this.timeSinceLastFire = 0;
         this.game = game;
         this.point = new Phaser.Point(0, -1);
+        this.spriteName = spriteName;
     }
     update() {
         this.sprite.body.velocity.x = 0;
@@ -16,11 +17,9 @@ class PlayerController {
         if (keyboard.isDown(this.configs.up)) {
             this.sprite.angle = 0;
             this.sprite.body.velocity.y = -PlayerController.TANK_SPEED;
-            this.point = new Phaser.Point(0, -1);
         } else if (keyboard.isDown(this.configs.down)) {
-            this.sprite.angle = 180;
+            this.sprite.angle = -180;
             this.sprite.body.velocity.y = PlayerController.TANK_SPEED;
-            this.point = new Phaser.Point(0, 1);
         } else if (keyboard.isDown(this.configs.left)) {
             this.sprite.angle = -90;
             this.sprite.body.velocity.x = -PlayerController.TANK_SPEED;
@@ -28,9 +27,16 @@ class PlayerController {
         } else if (keyboard.isDown(this.configs.right)) {
             this.sprite.angle = 90;
             this.sprite.body.velocity.x = PlayerController.TANK_SPEED;
-
         }
-
+        if (this.sprite.angle == -180) {
+            this.point = new Phaser.Point(0, 1);
+        } else if (this.sprite.angle == -90) {
+            this.point = new Phaser.Point(-1, 0);
+        } else if (this.sprite.angle == 90) {
+            this.point = new Phaser.Point(1, 0);
+        } else {
+            this.point = new Phaser.Point(0, -1);
+        }
         this.timeSinceLastFire += this.game.time.physicsElapsed;
 
         // Kiem tra xem nguoi choi co an phim ban dan hay khong va thuc hien ban dan
@@ -46,24 +52,24 @@ class PlayerController {
         }
     }
     fire() {
-        if (this.sprite.angle == -180) {
-            this.point = new Phaser.Point(0, 1);
-        } else if (this.sprite.angle == -90) {
-            this.point = new Phaser.Point(-1, 0);
-        } else if (this.sprite.angle == 90) {
-            this.point = new Phaser.Point(1, 0);
-        } else {
-            this.point = new Phaser.Point(0, -1);
-        }
         this.createBullet(this.point);
     }
     createBullet(direction) {
-        new BulletPlayer1Controller(
-            this.sprite.position,
-            direction,
-            bulletPlayer1Group,
-            'bullet'
-        );
+        if (this.spriteName == "player1") {
+            new BulletPlayer1Controller(
+                this.sprite.position,
+                direction,
+                this.sprite.angle
+            );
+        }
+
+        if (this.spriteName == "player2") {
+            new BulletPlayer2Controller(
+                this.sprite.position,
+                direction,
+                this.sprite.angle
+            );
+        }
     }
 }
 
