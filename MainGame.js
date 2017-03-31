@@ -46,12 +46,12 @@ MainGame.prototype = {
             new Player1Controller(
                 200,
                 200, {
-                    up: Phaser.Keyboard.UP,
-                    down: Phaser.Keyboard.DOWN,
-                    left: Phaser.Keyboard.LEFT,
-                    right: Phaser.Keyboard.RIGHT,
-                    fire: Phaser.Keyboard.SPACEBAR,
-                    cooldown: 0.5
+                  up: Phaser.Keyboard.W,
+                  down: Phaser.Keyboard.S,
+                  left: Phaser.Keyboard.A,
+                  right: Phaser.Keyboard.D,
+                  fire: Phaser.Keyboard.F,
+                  cooldown: 0.5
                 },
                 game
             )
@@ -60,12 +60,12 @@ MainGame.prototype = {
             new Player2Controller(
                 700,
                 550, {
-                    up: Phaser.Keyboard.W,
-                    down: Phaser.Keyboard.S,
-                    left: Phaser.Keyboard.A,
-                    right: Phaser.Keyboard.D,
-                    fire: Phaser.Keyboard.F,
-                    cooldown: 0.5
+                  up: Phaser.Keyboard.UP,
+                  down: Phaser.Keyboard.DOWN,
+                  left: Phaser.Keyboard.LEFT,
+                  right: Phaser.Keyboard.RIGHT,
+                  fire: Phaser.Keyboard.SPACEBAR,
+                  cooldown: 0.5
                 },
                 game
             )
