@@ -23,10 +23,11 @@ MainGame.prototype = {
         map = game.add.tilemap('map');
         map.addTilesetImage('wall_steel', 'wall_steel');
         map.addTilesetImage('wall_brick', 'wall_brick');
+        map.addTilesetImage('water_1', 'water_1');
         layer = map.createLayer('Tile Layer 1');
         layer.resizeWorld();
 
-        map.setCollisionBetween(1, 2);
+        map.setCollisionBetween(1, 6);
         //Tạo Group đạn
         bulletPlayer1Group = game.add.physicsGroup();
         bulletPlayer2Group = game.add.physicsGroup();
