@@ -47,6 +47,7 @@ MainGame.prototype = {
 
         hit2 = game.add.audio('hit2');
         shot = game.add.audio('shot');
+        boom = game.add.audio('boom');
 
         //Tao mang de luu nguoi choi
         players = [];
@@ -117,6 +118,17 @@ MainGame.prototype = {
             layer,
             onBulletHitLayer
         );
+
+        game.physics.arcade.overlap(
+          bulletPlayer1Group,
+          player2Group,
+          onBullet1HitPlayer2
+        )
+        game.physics.arcade.overlap(
+          bulletPlayer2Group,
+          player1Group,
+          onBullet2HitPlayer1
+        )
     },
     render: function(game) {
         game.debug.body(players);
@@ -131,4 +143,18 @@ function onBulletHitWallBrick(bulletPlayerGroup, wallbrickGroup) {
 }
 function onBulletHitLayer(bulletPlayerGroup, layer) {
     bulletPlayerGroup.kill();
+}
+function onBullet1HitPlayer2(bulletPlayer1Sprite, player2Sprite) {
+    bulletPlayer1Sprite.kill();
+    player2Sprite.damage(1);
+    if(!player2Sprite.alive){
+      boom.play();
+    }
+}
+function onBullet2HitPlayer1(bulletPlayer2Sprite, player1Sprite) {
+    bulletPlayer2Sprite.kill();
+    player1Sprite.damage(1);
+    if(!player1Sprite.alive){
+      boom.play();
+    }
 }

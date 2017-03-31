@@ -9,8 +9,10 @@ class PlayerController {
         this.game = game;
         this.point = new Phaser.Point(0, -1);
         this.spriteName = spriteName;
+        this.sprite.health = 10;
     }
     update() {
+
         this.sprite.body.velocity.x = 0;
         this.sprite.body.velocity.y = 0;
         //Thiet lap viec di chuyen cua tank
