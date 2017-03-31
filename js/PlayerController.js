@@ -49,10 +49,12 @@ class PlayerController {
         if (this.timeSinceLastFire >= this.configs.cooldown) {
             this.fire();
             this.timeSinceLastFire = 0;
+              shot.play();
         }
     }
     fire() {
         this.createBullet(this.point);
+
     }
     createBullet(direction) {
         if (this.spriteName == "player1") {

@@ -11,6 +11,8 @@ var bullets = [];
 var bulletPlayer1Group;
 var bulletPlayer2Group;
 var wallbrickGroup;
+var hit2;
+var shot;
 MainGame.prototype = {
     create: function(game) {
         game.stage.backgroundColor = '#000000';
@@ -39,6 +41,11 @@ MainGame.prototype = {
         // wallbrickGroup.collideWorldBounds = true;
         map.createFromObjects('Object Layer 1', 2, 'wall_brick', 0, true, false, wallbrickGroup);
         wallbrickGroup.setAll('body.immovable', true);
+
+        //Tạo âm thanh
+
+        hit2 = game.add.audio('hit2');
+        shot = game.add.audio('shot');
 
         //Tao mang de luu nguoi choi
         players = [];
@@ -119,6 +126,7 @@ MainGame.prototype = {
 function onBulletHitWallBrick(bulletPlayerGroup, wallbrickGroup) {
     bulletPlayerGroup.kill();
     wallbrickGroup.kill();
+    hit2.play();
 }
 function onBulletHitLayer(bulletPlayerGroup, layer) {
     bulletPlayerGroup.kill();

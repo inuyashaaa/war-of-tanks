@@ -20,6 +20,11 @@ Preloader.prototype = {
         game.load.image('player2', 'assets/images/tank_armor_up_c1_t2.png');
         game.load.image('bullet', 'assets/images/bullet_up.png');
         game.load.atlasJSONHash('assets', 'assets/assets.png', 'assets/assets.json');
+
+        //Load âm thank
+        game.load.audio('hit2','assets/sound/bullet_hit_2.ogg');
+        game.load.audio('shot','assets/sound/bullet_shot.ogg');
+
     },
 
     create: function(game) {
