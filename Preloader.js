@@ -19,7 +19,8 @@ Preloader.prototype = {
         //Load player
         game.load.image('player1', 'assets/images/tank_player1_up_c0_t1_s3.png');
         game.load.image('player2', 'assets/images/tank_armor_up_c1_t2.png');
-        game.load.image('bullet', 'assets/images/bullet_up.png');
+        game.load.image('bullet1', 'assets/bullet1.png');
+        game.load.image('bullet2', 'assets/bullet2.png');
         game.load.atlasJSONHash('assets', 'assets/assets.png', 'assets/assets.json');
 
         //Load âm thank
