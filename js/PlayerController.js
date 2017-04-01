@@ -1,10 +1,6 @@
 class PlayerController {
     constructor(x, y, configs, spriteName, physicsGroup, game) {
         this.sprite = physicsGroup.create(x, y, spriteName);
-        // this.sprite.animations.add('up', [9,10,11], 10, true);
-        // this.sprite.animations.add('down', [0,1,2], 10, true);
-        // this.sprite.animations.add('left', [3,4,5], 10, true);
-        // this.sprite.animations.add('right', [6,7,8], 10, true);
         this.sprite.anchor = new Phaser.Point(0.5, 0.5);
         this.sprite.body.collideWorldBounds = true;
         this.sprite.body.setSize(26, 26, 0, 0);
