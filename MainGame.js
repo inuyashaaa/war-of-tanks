@@ -110,13 +110,13 @@ MainGame.prototype = {
         players = [];
         players.push(
             new Player1Controller(
-                800,
-                600, {
+                48,
+                48, {
                     up: Phaser.Keyboard.W,
                     down: Phaser.Keyboard.S,
                     left: Phaser.Keyboard.A,
                     right: Phaser.Keyboard.D,
-                    fire: Phaser.Keyboard.F,
+                    fire: Phaser.Keyboard.SPACEBAR,
                     cooldown: 0.3
                 },
                 game
@@ -124,13 +124,13 @@ MainGame.prototype = {
         );
         players.push(
             new Player2Controller(
-                70,
-                536, {
+                912,
+                48, {
                     up: Phaser.Keyboard.UP,
                     down: Phaser.Keyboard.DOWN,
                     left: Phaser.Keyboard.LEFT,
                     right: Phaser.Keyboard.RIGHT,
-                    fire: Phaser.Keyboard.SPACEBAR,
+                    fire: Phaser.Keyboard.NUMPAD_0,
                     cooldown: 0.3
                 },
                 game
