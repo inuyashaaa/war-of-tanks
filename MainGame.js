@@ -204,10 +204,9 @@ MainGame.prototype = {
 
                 }
             }
-        }
 
+      },
 
-    },
     update: function(game) {
         game.physics.arcade.collide(player1Group, layer);
         game.physics.arcade.collide(player2Group, layer);
@@ -263,9 +262,11 @@ MainGame.prototype = {
         );
 
         if (tank1Flag >=2) {
+          tank1Flag = 0;
           game.state.start('Win1');
         }
         if (tank2Flag >=2) {
+          tank2Flag = 0;
           game.state.start('Win2');
         }
         if (player1Death == 1) {
@@ -290,6 +291,7 @@ MainGame.prototype = {
                 });
             });
             if (tank2Flag == 1) {
+
               flag2.forEach(function(ship) {
                   ship.reset(32, 580);
               });
