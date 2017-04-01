@@ -26,7 +26,7 @@ var textHealth;
 var checkSound = 1;
 MainGame.prototype = {
     create: function(game) {
-        game.stage.backgroundColor = '#000000';
+        game.stage.backgroundColor = '#1C1C1C';
 
         game.physics.startSystem(Phaser.Physics.ARCADE);
         keyboard = game.input.keyboard;
@@ -67,7 +67,9 @@ MainGame.prototype = {
         map.createFromObjects('Object Layer 1', 7, 'trees', 0, true, false, treeGroup);
         wallbrickGroup.setAll('body.immovable', true);
         waterGroup.setAll('body.immovable', true);
+        waterGroup.setAll('alpha', 0.9);
         treeGroup.setAll('body.immovable', true);
+        treeGroup.setAll("alpha", 0.9);
         //Tạo âm thanh
 
         hit2 = game.add.audio('hit2');

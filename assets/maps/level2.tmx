@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="80" height="40" tilewidth="16" tileheight="16" nextobjectid="1262">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="80" height="40" tilewidth="16" tileheight="16" nextobjectid="1263">
  <tileset firstgid="1" name="wall_steel" tilewidth="16" tileheight="16" tilecount="1" columns="1">
   <image source="../images/wall_steel.png" width="16" height="16"/>
  </tileset>
@@ -1016,7 +1016,6 @@
   <object id="1159" gid="7" x="496" y="368" width="16" height="16"/>
   <object id="1160" gid="7" x="512" y="368" width="16" height="16"/>
   <object id="1161" gid="7" x="528" y="368" width="16" height="16"/>
-  <object id="1162" gid="7" x="484" y="368" width="16" height="16"/>
   <object id="1163" gid="7" x="464" y="368" width="16" height="16"/>
   <object id="1164" gid="7" x="512" y="384" width="16" height="16"/>
   <object id="1165" gid="7" x="496" y="384" width="16" height="16"/>
@@ -1100,5 +1099,6 @@
   <object id="1257" gid="7" x="944" y="352" width="16" height="16"/>
   <object id="1260" gid="7" x="944" y="368" width="16" height="16"/>
   <object id="1261" gid="7" x="928" y="368" width="16" height="16"/>
+  <object id="1262" gid="7" x="480" y="368" width="16" height="16"/>
  </objectgroup>
 </map>
