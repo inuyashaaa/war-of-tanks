@@ -3,23 +3,16 @@ Win2.prototype = {
     preload: function(game) {
         game.load.image('background', 'assets/over2.png');
         game.load.image('button', 'assets/Restart.png');
-
     },
-
     create: function(game) {
-
-
         game.add.image(0, 0, 'background');
         // Tạo button Restart
-      //353x80
-        this.createButton(game, "", game.world.width- 500, game.world.height -180, 353, 80,
+        //353x80
+        this.createButton(game, "", game.world.width - 170, game.world.height - 180, 353, 80,
             function() {
                 this.state.start("MainGame");
             });
         // Anh em có thể viết hướng dẫn vào dưới đây
-
-        // titleScreen = game.add.sprite(game.world.centerX, game.world.centerY - 192, 'titleScreen');
-        // titleScreen.anchor.setTo(0.5, 0.5);
     },
     // Hàm tạo button
     createButton: function(game, string, x, y, w, h, callback) {

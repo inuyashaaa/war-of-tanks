@@ -104,7 +104,7 @@ MainGame.prototype = {
         );
         players.push(
             new Player2Controller(
-                912,
+                915,
                 48, {
                     up: Phaser.Keyboard.UP,
                     down: Phaser.Keyboard.DOWN,
