@@ -34,12 +34,17 @@ Preloader.prototype = {
         game.load.audio('boom', 'assets/sound/explosion_1.ogg');
         game.load.audio('hit2', 'assets/sound/bullet_hit_2.ogg');
         game.load.audio('shot', 'assets/sound/bullet_shot.ogg');
+        game.load.audio('bullethitplayer', 'assets/sound/bullethitplayer.m4a');
+        game.load.audio('bulletshot', 'assets/sound/bulletshot.mp3');
+        game.load.audio('bullethitwall', 'assets/sound/bullethitwall.mp3');
+
+
 
         //Load health
         // game.load.image('healthBar', 'assets/images/healthBar.png');
         // game.load.image('healthBarBG', 'assets/images/healthBarBG.png');
         //Load background-menu
-        game.load.image('background-menu','assets/background-menu1.png');
+        game.load.image('background-pause','assets/background-pause.png');
     },
 
     create: function(game) {

@@ -93,6 +93,10 @@ MainGame.prototype = {
         hit2 = game.add.audio('hit2');
         shot = game.add.audio('shot');
         boom = game.add.audio('boom');
+        bullethitplayer = game.add.audio('bullethitplayer');
+        bulletshot = game.add.audio('bulletshot');
+        bullethitwall = game.add.audio('bullethitwall');
+
 
         //flag
         flag1.create(896, 580, 'flag');
@@ -142,26 +146,28 @@ MainGame.prototype = {
             game.paused = true;
 
             // Then add the menu
-            menu = game.add.sprite(game.world.centerX, game.world.centerY, 'background-menu');
+            menu = game.add.sprite(game.world.centerX, game.world.centerY, 'background-pause');
             menu.anchor.setTo(0.5, 0.5);
 
             // And a label to illustrate which menu item was chosen. (This is not necessary)
-            choiseLabel = game.add.text(game.world.centerX - 220, game.world.centerY - 250, 'WAR OF TANKS', {
-                font: "bold 60px Arial",
-                fill: '#0040ff'
+
+
+            choiseLabel = game.add.text(game.world.centerX - 420, game.world.centerY - 250, 'WAR OF TANKS', {
+                font: "bold 60px Algerian",
+                fill: '#1f1f2e'
             });
-            choiseLabel1 = game.add.text(game.world.centerX - 80, game.world.centerY - 150, 'Continue', {
-                font: 'bold 40px Arial',
-                fill: '#ff0000',
+            choiseLabel1 = game.add.text(game.world.centerX - 310, game.world.centerY - 150, 'CONTINUE', {
+                font: 'bold 40px Algerian',
+                fill: '#0a0a0f',
 
             });
-            choiseLabel2 = game.add.text(game.world.centerX - 110, game.world.centerY - 50, 'Sound On/Off', {
-                font: 'bold 40px Arial',
-                fill: '#ff0000',
+            choiseLabel2 = game.add.text(game.world.centerX - 350, game.world.centerY - 50, 'SOUND ON/OFF', {
+                font: 'bold 40px Algerian',
+                fill: '#0a0a0f',
             });
-            choiseLabel3 = game.add.text(game.world.centerX - 110, game.world.centerY + 50, 'Back to Menu', {
-                font: 'bold 40px Arial',
-                fill: '#ff0000'
+            choiseLabel3 = game.add.text(game.world.centerX - 350, game.world.centerY + 50, 'BACK TO MENU', {
+                font: 'bold 40px Algerian',
+                fill: '#0a0a0f'
             });
 
         });
@@ -171,15 +177,15 @@ MainGame.prototype = {
             // Only act if paused
             if (game.paused) {
                 // Calculate the corners of the menu
-                var x1 = game.world.centerX - 120;
-                var x2 = game.world.centerX + 130;
+                var x1 = game.world.centerX - 350;
+                var x2 = game.world.centerX - 50;
                 var y1 = game.world.centerY - 150;
                 var y2 = game.world.centerY + 90;
 
                 // Check if the click was inside the menu
                 if (event.x > x1 && event.x < x2 && event.y > y1 && event.y < y2) {
-                    // The choicemap is an array that will help us see which item was clicked
-                    if (event.x > (x1 + 50) && event.x < x2 - 40 && event.y < (y1 + 60)) {
+
+                    if (event.x > (x1 + 50) && event.x < x2 - 80 && event.y < (y1 + 40)) {
                         menu.destroy();
                         choiseLabel.destroy();
                         choiseLabel1.destroy();
@@ -187,8 +193,15 @@ MainGame.prototype = {
                         choiseLabel3.destroy();
                         game.paused = false;
                     }
-                    if (event.y > y1 + 100 && event.y < y2 - 100) {}
-                    if (event.y > y1 + 200) {}
+                    if (event.y > y1 + 100 && event.y < y2 - 50) {
+
+                    }
+                    if (event.y > y1 + 200) {
+                      back_menu =1;
+                    }
+
+                }
+
                 }
             }
         }
@@ -296,7 +309,7 @@ MainGame.prototype = {
 function onBulletHitWallBrick(bulletPlayerGroup, wallbrickGroup) {
     bulletPlayerGroup.kill();
     wallbrickGroup.kill();
-    hit2.play();
+    bullethitwall.play();
 }
 
 function onBulletHitLayer(bulletPlayerGroup, layer) {
@@ -307,7 +320,7 @@ function onBullet1HitPlayer2(bulletPlayer1Sprite, player2Sprite) {
     bulletPlayer1Sprite.kill();
     player2Sprite.damage(1);
     if (!player2Sprite.alive) {
-        boom.play();
+        bullethitplayer.play();
         player2Death = 1;
     }
 }
@@ -317,7 +330,7 @@ function onBullet2HitPlayer1(bulletPlayer2Sprite, player1Sprite) {
     player1Sprite.kill();
     // player1Sprite.reset(48, 48);
     if (!player1Sprite.alive) {
-        boom.play();
+        bullethitplayer.play();
         player1Death = 1;
     }
 }
