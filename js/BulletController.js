@@ -2,7 +2,7 @@ class BulletController {
     constructor(position, direction, physicsGroup, spriteName, angle) {
         this.sprite = physicsGroup.create(position.x, position.y, spriteName);
         this.sprite.anchor = new Phaser.Point(0.5, 0.5);
-        this.sprite.body.setSize(8, 8);
+        this.sprite.body.setSize(6, 6);
         this.sprite.angle = angle;
         this.sprite.checkWorldBounds = true;
         this.sprite.outOfBoundsKill = true;
