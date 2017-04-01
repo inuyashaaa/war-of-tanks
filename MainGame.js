@@ -44,15 +44,19 @@ MainGame.prototype = {
         wallbrickGroup = game.add.group();
         wallbrickGroup.enableBody = true;
 
-        //Tạo group cho nước
-        waterGroup = game.add.physicsGroup();
-        waterGroup.enableBody = true;
-        treeGroup = game.add.physicsGroup();
-        treeGroup.enableBody = true;
+        //Tạo Group player
+        player1Group = game.add.physicsGroup();
+        player2Group = game.add.physicsGroup();
 
         //Tạo Group đạn
         bulletPlayer1Group = game.add.physicsGroup();
         bulletPlayer2Group = game.add.physicsGroup();
+
+        //Tạo group cho nước
+        waterGroup = game.add.group();
+        waterGroup.enableBody = true;
+        treeGroup = game.add.group();
+        treeGroup.enableBody = true;
 
         //Group health
         healthBarGroup = game.add.physicsGroup();
@@ -71,9 +75,7 @@ MainGame.prototype = {
         shot = game.add.audio('shot');
         boom = game.add.audio('boom');
 
-        //Tạo Group player
-        player1Group = game.add.physicsGroup();
-        player2Group = game.add.physicsGroup();
+
 
         //Tao mang de luu nguoi choi
         players = [];
@@ -158,6 +160,7 @@ MainGame.prototype = {
         game.physics.arcade.collide(player2Group, wallbrickGroup);
         game.physics.arcade.collide(player1Group, waterGroup);
         game.physics.arcade.collide(player2Group, waterGroup);
+
         players.forEach(
             function(ship) {
                 ship.update();
@@ -206,8 +209,7 @@ MainGame.prototype = {
         );
     },
     render: function(game) {
-        game.debug.body(players);
-        game.debug.body(treeGroup);
+        // game.debug.body(players);
     }
 
 };
