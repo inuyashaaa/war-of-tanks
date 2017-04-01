@@ -28,6 +28,8 @@ var checkSound = 1;
 var flag1;
 var flag2;
 var menu;
+var tank1Flag = 0;
+var tank2Flag = 0;
 MainGame.prototype = {
     create: function(game) {
         game.stage.backgroundColor = '#363636';
@@ -60,6 +62,10 @@ MainGame.prototype = {
         bulletPlayer1Group = game.add.physicsGroup();
         bulletPlayer2Group = game.add.physicsGroup();
 
+        //Group
+        flag1 = game.add.physicsGroup();
+        flag2 = game.add.physicsGroup();
+
         //Tạo Group player
         player1Group = game.add.physicsGroup();
         player2Group = game.add.physicsGroup();
@@ -89,17 +95,17 @@ MainGame.prototype = {
         boom = game.add.audio('boom');
 
         //flag
-        flag1 = game.add.sprite(896,580, 'flag');
+        flag1.create(896, 580, 'flag');
         flag1.enableBody = true;
-        flag2 = game.add.sprite(32,580, 'flag');
+        flag2.create(32, 580, 'flag');
         flag2.enableBody = true;
 
         //Tao mang de luu nguoi choi
         players = [];
         players.push(
             new Player1Controller(
-                48,
-                48, {
+                800,
+                600, {
                     up: Phaser.Keyboard.W,
                     down: Phaser.Keyboard.S,
                     left: Phaser.Keyboard.A,
@@ -112,8 +118,8 @@ MainGame.prototype = {
         );
         players.push(
             new Player2Controller(
-                915,
-                48, {
+                70,
+                536, {
                     up: Phaser.Keyboard.UP,
                     down: Phaser.Keyboard.DOWN,
                     left: Phaser.Keyboard.LEFT,
@@ -124,29 +130,6 @@ MainGame.prototype = {
                 game
             )
         );
-
-        // //health
-        // textHealth = game.add.text(20, 0, 'P1', {
-        //     fontSize: '8px',
-        //     fill: '#000000'
-        // });
-        // textHealth = game.add.text(615, 0, 'P2', {
-        //     fontSize: '8px',
-        //     fill: '#000000'
-        // });
-        // healthb = game.add.image('healthBar');
-        // healthbbg = game.add.image('healthBarBG');
-        // healthBarP1 = new HealthBarController(
-        //     new Phaser.Point(50, 10),
-        //     players[0]
-        // );
-        // healthBarP2 = new HealthBarController(
-        //     new Phaser.Point(650, 10),
-        //     players[1]
-        // );
-
-        //Button Quit
-
 
         //press ESC to pause or unpause
         pause_label = game.add.text(game.world.centerX, game.world.height - 30, 'PAUSE', {
@@ -221,18 +204,11 @@ MainGame.prototype = {
         game.physics.arcade.collide(player1Group, waterGroup);
         game.physics.arcade.collide(player2Group, waterGroup);
 
-        //
-        // game.physics.arcade.collide(player1Group, flag1);
-        // game.physics.arcade.collide(player2Group, flag2);
-        //
         players.forEach(
             function(ship) {
                 ship.update();
             }
         );
-
-        // healthBarP1.update();
-        // healthBarP2.update();
 
         bullets.forEach(function(bullet) {
             if (bullet.update && typeof bullet.update == "function") {
@@ -272,6 +248,13 @@ MainGame.prototype = {
             player1Group,
             onBullet2HitPlayer1
         );
+
+        if (tank1Flag >=2) {
+          game.state.start('Win1');
+        }
+        if (tank2Flag >=2) {
+          game.state.start('Win2');
+        }
         if (player1Death == 1) {
             player1Death = 0;
             game.time.events.add(Phaser.Timer.SECOND * 2, function() {
@@ -279,12 +262,29 @@ MainGame.prototype = {
                     ship.reset(48, 48);
                 });
             });
+            if (tank1Flag == 1) {
+              flag1.forEach(function(ship) {
+                  ship.reset(896, 580);
+              });
+              tank1Flag = 0;
+            }
         }
-        // if (player2Death == 1) {
-        //     player2Death = 0;
-        //     this.state.start('Win1');
-        //
-        // }
+        if (player2Death == 1) {
+            player2Death = 0;
+            game.time.events.add(Phaser.Timer.SECOND * 2, function() {
+                player2Group.forEach(function(ship) {
+                    ship.reset(912, 48);
+                });
+            });
+            if (tank2Flag == 1) {
+              flag2.forEach(function(ship) {
+                  ship.reset(32, 580);
+              });
+              tank2Flag = 0;
+            }
+        }
+        game.physics.arcade.overlap(flag1,player1Group, tank1TakeFlag);
+        game.physics.arcade.overlap(flag2,player2Group, tank2TakeFlag);
 
     },
     render: function(game) {
@@ -314,11 +314,21 @@ function onBullet1HitPlayer2(bulletPlayer1Sprite, player2Sprite) {
 
 function onBullet2HitPlayer1(bulletPlayer2Sprite, player1Sprite) {
     bulletPlayer2Sprite.kill();
-    player1Sprite.damage(1);
+    player1Sprite.kill();
     // player1Sprite.reset(48, 48);
     if (!player1Sprite.alive) {
         boom.play();
-        player1Death =1;
+        player1Death = 1;
     }
+}
 
+function tank1TakeFlag(flag1, player1Group) {
+  flag1.kill();
+  tank1Flag +=1;
+  flag1.reset(32, 32);
+}
+function tank2TakeFlag(flag2, player2Group) {
+  flag2.kill();
+  tank2Flag +=1;
+  flag2.reset(896, 32);
 }

@@ -7,7 +7,7 @@ class PlayerController {
         // this.sprite.animations.add('right', [6,7,8], 10, true);
         this.sprite.anchor = new Phaser.Point(0.5, 0.5);
         this.sprite.body.collideWorldBounds = true;
-        this.sprite.body.setSize(28, 28, 0, 0);
+        this.sprite.body.setSize(26, 26, 0, 0);
         this.configs = configs;
         this.timeSinceLastFire = 0;
         this.game = game;
@@ -83,4 +83,4 @@ class PlayerController {
     }
 }
 
-PlayerController.TANK_SPEED = 75;
+PlayerController.TANK_SPEED = 120;
