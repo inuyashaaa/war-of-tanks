@@ -89,7 +89,7 @@ MainGame.prototype = {
         waterGroup.setAll('body.immovable', true);
         waterGroup.setAll('alpha', 0.9);
         treeGroup.setAll('body.immovable', true);
-        treeGroup.setAll("alpha", 0.8);
+        // treeGroup.setAll("alpha", 0.8);
         //Tạo âm thanh
 
         hit2 = game.add.audio('hit2');
@@ -98,14 +98,14 @@ MainGame.prototype = {
         bullethitplayer = game.add.audio('bullethitplayer');
         bulletshot = game.add.audio('bulletshot');
         bullethitwall = game.add.audio('bullethitwall');
-        soundbackground = game.add.audio('soundbackground');
-        soundbackground.play();
+        // soundbackground = game.add.audio('soundbackground');
+        // soundbackground.play();
 
 
         //flag
-        flag1.create(896, 580, 'flag');
+        flag1.create(896, 580, 'flag1');
         flag1.enableBody = true;
-        flag2.create(32, 580, 'flag');
+        flag2.create(32, 580, 'flag2');
         flag2.enableBody = true;
 
         //Tao mang de luu nguoi choi
@@ -316,8 +316,6 @@ MainGame.prototype = {
         }
         game.physics.arcade.overlap(flag1, player1Group, tank1TakeFlag);
         game.physics.arcade.overlap(flag2, player2Group, tank2TakeFlag);
-        console.log(sound);
-
     },
     render: function(game) {
         game.debug.body(players);

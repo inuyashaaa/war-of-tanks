@@ -1,14 +1,10 @@
 Preloader = function(game) {
-    game.preloadBar = null;
 };
 
 Preloader.prototype = {
     preload: function(game) {
         //Tạo thanh Preload lúc đầu game
-        game.preloadBar = game.add.sprite(this.world.centerX, this.world.centerY, 'preloaderBar');
-        game.preloadBar.anchor.setTo(0.5, 0.5);
         game.time.advancedTiming = true;
-        game.load.setPreloadSprite(game.preloadBar);
 
         //Load Map bằng JSON
         // game.load.tilemap('map', 'assets/maps/level1.json', null, Phaser.Tilemap.TILED_JSON);
@@ -28,7 +24,8 @@ Preloader.prototype = {
         game.load.atlasJSONHash('assets', 'assets/assets.png', 'assets/assets.json');
 
         //load flag
-        game.load.image('flag', 'assets/images/bang.png');
+        game.load.image('flag1', 'assets/images/bang.png');
+        game.load.image('flag2', 'assets/images/bang2.png');
 
         //Load âm thank
         game.load.audio('boom', 'assets/sound/explosion_1.ogg');
@@ -40,10 +37,6 @@ Preloader.prototype = {
         game.load.audio("soundbackground", 'assets/sound/soundbackground.mp3');
 
 
-
-        //Load health
-        // game.load.image('healthBar', 'assets/images/healthBar.png');
-        // game.load.image('healthBarBG', 'assets/images/healthBarBG.png');
         //Load background-menu
         game.load.image('background-pause','assets/background-pause.png');
     },

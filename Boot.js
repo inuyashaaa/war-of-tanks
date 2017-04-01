@@ -8,10 +8,9 @@ Boot.prototype = {
         this.stage.disableVisibilityChange = true; //Về xem thêm
     },
     preloader: function(game) {
-        game.load.image('preloaderBar', 'assets/preloader.png');
     },
     create: function(game) {
-      
+
         game.state.start('MainMenu');
     }
 };
