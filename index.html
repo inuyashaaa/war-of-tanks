@@ -8,6 +8,9 @@
     <script src="Preloader.js"></script>
     <script src="MainMenu.js"></script>
     <script src="MainGame.js"></script>
+    <script src="About.js"></script>
+    <script src="Howtoplay.js"></script>
+
     <script src="js/PlayerController.js"></script>
     <script src="js/Player1Controller.js"></script>
     <script src="js/Player2Controller.js"></script>
@@ -15,9 +18,7 @@
     <script src="js/BulletController.js"></script>
     <script src="js/BulletPlayer1Controller.js"></script>
     <script src="js/BulletPlayer2Controller.js"></script>
-
-    <script src="js/HealthBarController.js"></script>
-
+     <script src="js/HealthBarController.js"></script>
   </head>
   <body>
     <script type="text/javascript">
@@ -27,6 +28,9 @@
         game.state.add('Preloader', Preloader);
         game.state.add('MainMenu', MainMenu);
         game.state.add('MainGame', MainGame);
+        game.state.add('About', About);
+        game.state.add('Howtoplay', Howtoplay);
+
 
         game.state.start('Boot');
       };

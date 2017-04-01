@@ -11,6 +11,7 @@ Boot.prototype = {
         game.load.image('preloaderBar', 'assets/preloader.png');
     },
     create: function(game) {
-        game.state.start('Preloader');
+      
+        game.state.start('MainMenu');
     }
 };

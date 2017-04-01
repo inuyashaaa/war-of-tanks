@@ -15,7 +15,7 @@ var wallbrickGroup;
 var healthBarP1;
 var healthBarP2;
 var textHealth;
-
+var checkSound =1;
 MainGame.prototype = {
     create: function(game) {
         game.stage.backgroundColor = '#000000';
@@ -100,14 +100,36 @@ MainGame.prototype = {
         healthBarP1 = new HealthBarController(
             new Phaser.Point(50, 10),
             players[0]
-        )
+        );
         healthBarP2 = new HealthBarController(
             new Phaser.Point(650, 10),
             players[1]
-        )
+        );
+        //Button Quit
+        this.createButton(game, "Quit", 910, 625, 140, 30,
+            function() {
+                this.state.start("MainMenu");
+            });
+            this.createButton(game, "Quit", 910, 625, 140, 30,
+                function() {
+                    this.state.start("MainMenu");
+                });
 
     },
+    //Tao button
+    createButton: function(game, string, x, y, w, h, callback) {
+        var button1 = game.add.button(x, y, 'button', callback, this, 2, 1, 0);
+        button1.anchor.setTo(0.5, 0.5);
+        button1.width = w;
+        button1.height = h;
+        var txt = game.add.text(button1.x, button1.y, string, {
+            font: "25px Arial",
+            fill: "#ffffff",
+            align: "center",
 
+        });
+        txt.anchor.setTo(0.5, 0.5);
+    },
     update: function(game) {
         game.physics.arcade.collide(player1Group, layer);
         game.physics.arcade.collide(player2Group, layer);
@@ -154,12 +176,12 @@ MainGame.prototype = {
             bulletPlayer1Group,
             player2Group,
             onBullet1HitPlayer2
-        )
+        );
         game.physics.arcade.overlap(
             bulletPlayer2Group,
             player1Group,
             onBullet2HitPlayer1
-        )
+        );
     },
     render: function(game) {
         game.debug.body(players);

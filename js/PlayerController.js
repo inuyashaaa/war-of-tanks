@@ -51,7 +51,7 @@ class PlayerController {
         if (this.timeSinceLastFire >= this.configs.cooldown) {
             this.fire();
             this.timeSinceLastFire = 0;
-              shot.play();
+            shot.play();
         }
     }
     fire() {
