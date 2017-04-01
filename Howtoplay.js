@@ -22,8 +22,8 @@ Howtoplay.prototype = {
             });
             // Anh em có thể viết hướng dẫn vào dưới đây
         game.add.text(150, 100, 'HƯỚNG DẪN VÀ PHÍM ĐIỀN KHIỂN', {
-            font: '35px Arial',
-            fill: '#ff00ff',
+            font: '35px Comic Sans MS',
+            fill: '#fff',
             align: 'center'
         });
         // titleScreen = game.add.sprite(game.world.centerX, game.world.centerY - 192, 'titleScreen');

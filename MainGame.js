@@ -30,6 +30,8 @@ var flag2;
 var menu;
 var tank1Flag = 0;
 var tank2Flag = 0;
+var back_menu = 0;
+var sound =true;
 MainGame.prototype = {
     create: function(game) {
         game.stage.backgroundColor = '#363636';
@@ -136,8 +138,8 @@ MainGame.prototype = {
         );
 
         //press ESC to pause or unpause
-        pause_label = game.add.text(game.world.centerX, game.world.height - 30, 'PAUSE', {
-            font: 'bold 30px Arial',
+        pause_label = game.add.text(game.world.centerX-50, game.world.height - 40, 'PAUSE', {
+            font: 'bold 35px Comic Sans MS',
             fill: '#000'
         });
         pause_label.inputEnabled = true;
@@ -194,18 +196,24 @@ MainGame.prototype = {
                         game.paused = false;
                     }
                     if (event.y > y1 + 100 && event.y < y2 - 50) {
-
+                      sound = !sound;
                     }
                     if (event.y > y1 + 200) {
-                      back_menu =1;
+                        menu.destroy();
+                        choiseLabel.destroy();
+                        choiseLabel1.destroy();
+                        choiseLabel2.destroy();
+                        choiseLabel3.destroy();
+                        game.paused = false;
+                        back_menu = 1;
                     }
 
                 }
 
-                }
             }
+        }
 
-      },
+    },
 
     update: function(game) {
         game.physics.arcade.collide(player1Group, layer);
@@ -261,13 +269,13 @@ MainGame.prototype = {
             onBullet2HitPlayer1
         );
 
-        if (tank1Flag >=2) {
-          tank1Flag = 0;
-          game.state.start('Win1');
+        if (tank1Flag >= 2) {
+            tank1Flag = 0;
+            game.state.start('Win1');
         }
-        if (tank2Flag >=2) {
-          tank2Flag = 0;
-          game.state.start('Win2');
+        if (tank2Flag >= 2) {
+            tank2Flag = 0;
+            game.state.start('Win2');
         }
         if (player1Death == 1) {
             player1Death = 0;
@@ -277,10 +285,10 @@ MainGame.prototype = {
                 });
             });
             if (tank1Flag == 1) {
-              flag1.forEach(function(ship) {
-                  ship.reset(896, 580);
-              });
-              tank1Flag = 0;
+                flag1.forEach(function(ship) {
+                    ship.reset(896, 580);
+                });
+                tank1Flag = 0;
             }
         }
         if (player2Death == 1) {
@@ -292,14 +300,18 @@ MainGame.prototype = {
             });
             if (tank2Flag == 1) {
 
-              flag2.forEach(function(ship) {
-                  ship.reset(32, 580);
-              });
-              tank2Flag = 0;
+                flag2.forEach(function(ship) {
+                    ship.reset(32, 580);
+                });
+                tank2Flag = 0;
             }
         }
-        game.physics.arcade.overlap(flag1,player1Group, tank1TakeFlag);
-        game.physics.arcade.overlap(flag2,player2Group, tank2TakeFlag);
+        if (back_menu == 1) {
+            back_menu = 0;
+            this.state.start("MainMenu");
+        }
+        game.physics.arcade.overlap(flag1, player1Group, tank1TakeFlag);
+        game.physics.arcade.overlap(flag2, player2Group, tank2TakeFlag);
 
     },
     render: function(game) {
@@ -311,6 +323,7 @@ MainGame.prototype = {
 function onBulletHitWallBrick(bulletPlayerGroup, wallbrickGroup) {
     bulletPlayerGroup.kill();
     wallbrickGroup.kill();
+    if(sound)
     bullethitwall.play();
 }
 
@@ -322,8 +335,10 @@ function onBullet1HitPlayer2(bulletPlayer1Sprite, player2Sprite) {
     bulletPlayer1Sprite.kill();
     player2Sprite.damage(1);
     if (!player2Sprite.alive) {
-        bullethitplayer.play();
+
         player2Death = 1;
+        if(sound)
+        bullethitplayer.play();
     }
 }
 
@@ -332,18 +347,21 @@ function onBullet2HitPlayer1(bulletPlayer2Sprite, player1Sprite) {
     player1Sprite.kill();
     // player1Sprite.reset(48, 48);
     if (!player1Sprite.alive) {
-        bullethitplayer.play();
+
         player1Death = 1;
+        if(sound)
+        bullethitplayer.play();
     }
 }
 
 function tank1TakeFlag(flag1, player1Group) {
-  flag1.kill();
-  tank1Flag +=1;
-  flag1.reset(32, 32);
+    flag1.kill();
+    tank1Flag += 1;
+    flag1.reset(32, 32);
 }
+
 function tank2TakeFlag(flag2, player2Group) {
-  flag2.kill();
-  tank2Flag +=1;
-  flag2.reset(896, 32);
+    flag2.kill();
+    tank2Flag += 1;
+    flag2.reset(896, 32);
 }

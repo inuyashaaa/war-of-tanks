@@ -23,38 +23,38 @@ About.prototype = {
             });
             //Thông tin nhóm(còn thiếu)
           game.add.text(350,100, 'TANK OF WAR',{
-            font:"40px Arial",
-            fill:"#48ed00",
+            font:"40px Comic Sans MS",
+            fill:"#fff",
             align:"center"
           });
           game.add.text(350,150, 'WEB - GEN6 - CI',{
-            font:"40px Arial",
-            fill:"#48ed00",
+            font:"40px Comic Sans MS",
+            fill:"#fff",
             align:"center"
           });
           game.add.text(350,200, 'Thông tin team:',{
-            font:"30px Arial",
-            fill:"#48ed00",
+            font:"30px Comic Sans MS",
+            fill:"#fff",
             align:"center"
           });
           game.add.text(350,250, '- Phạm Huy Mạnh',{
-            font:"30px Arial",
-            fill:"#48ed00",
+            font:"30px Comic Sans MS",
+            fill:"#fff",
             align:"center"
           });
           game.add.text(350,300, '- Trần Quang Hải',{
-            font:"30px Arial",
-            fill:"#48ed00",
+            font:"30px Comic Sans MS",
+            fill:"#fff",
             align:"center"
           });
           game.add.text(350,350, '- Trịnh Văn Thắng',{
-            font:"30px Arial",
-            fill:"#48ed00",
+            font:"30px Comic Sans MS",
+            fill:"#fff",
             align:"center"
           });
           game.add.text(350,400, '- Lâm Văn Thư',{
-            font:"30px Arial",
-            fill:"#48ed00",
+            font:"30px Comic Sans MS",
+            fill:"#fff",
             align:"center"
           });
 
