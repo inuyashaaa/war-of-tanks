@@ -22,37 +22,37 @@ About.prototype = {
                 this.state.start("MainMenu");
             });
             //Thông tin nhóm(còn thiếu)
-          game.add.text(350,100, 'TANK OF WAR',{
+          game.add.text(330,50, 'TANK OF WAR',{
             font:"40px Comic Sans MS",
             fill:"#fff",
             align:"center"
           });
-          game.add.text(350,150, 'WEB - GEN6 - CI',{
+          game.add.text(320,150, 'WEB - GEN6 - CI',{
             font:"40px Comic Sans MS",
             fill:"#fff",
             align:"center"
           });
-          game.add.text(350,200, 'Thông tin team:',{
+          game.add.text(200,200, 'Game được phát triển bởi các thành viên:',{
             font:"30px Comic Sans MS",
             fill:"#fff",
             align:"center"
           });
-          game.add.text(350,250, '- Phạm Huy Mạnh',{
+          game.add.text(250,250, '- Phạm Huy Mạnh(Đẹp troai, gánh team)',{
             font:"30px Comic Sans MS",
             fill:"#fff",
             align:"center"
           });
-          game.add.text(350,300, '- Trần Quang Hải',{
+          game.add.text(250,300, '- Trần Quang Hải(Chuyên gia âm thanh)',{
             font:"30px Comic Sans MS",
             fill:"#fff",
             align:"center"
           });
-          game.add.text(350,350, '- Trịnh Văn Thắng',{
+          game.add.text(250,350, '- Trịnh Văn Thắng(Nhà phát triển game)',{
             font:"30px Comic Sans MS",
             fill:"#fff",
             align:"center"
           });
-          game.add.text(350,400, '- Lâm Văn Thư',{
+          game.add.text(250,400, '- Lâm Văn Thư(Designer)',{
             font:"30px Comic Sans MS",
             fill:"#fff",
             align:"center"

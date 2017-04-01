@@ -31,7 +31,7 @@ var menu;
 var tank1Flag = 0;
 var tank2Flag = 0;
 var back_menu = 0;
-var sound =true;
+var sound = true;
 MainGame.prototype = {
     create: function(game) {
         game.stage.backgroundColor = '#363636';
@@ -98,6 +98,8 @@ MainGame.prototype = {
         bullethitplayer = game.add.audio('bullethitplayer');
         bulletshot = game.add.audio('bulletshot');
         bullethitwall = game.add.audio('bullethitwall');
+        soundbackground = game.add.audio('soundbackground');
+        soundbackground.play();
 
 
         //flag
@@ -138,7 +140,7 @@ MainGame.prototype = {
         );
 
         //press ESC to pause or unpause
-        pause_label = game.add.text(game.world.centerX-50, game.world.height - 40, 'PAUSE', {
+        pause_label = game.add.text(game.world.centerX - 50, game.world.height - 40, 'PAUSE', {
             font: 'bold 35px Comic Sans MS',
             fill: '#000'
         });
@@ -154,22 +156,22 @@ MainGame.prototype = {
             // And a label to illustrate which menu item was chosen. (This is not necessary)
 
 
-            choiseLabel = game.add.text(game.world.centerX - 420, game.world.centerY - 250, 'WAR OF TANKS', {
-                font: "bold 60px Algerian",
-                fill: '#1f1f2e'
-            });
+            // choiseLabel = game.add.text(game.world.centerX - 420, game.world.centerY - 250, 'WAR OF TANKS', {
+            //     font: "bold 60px Algerian",
+            //     fill: '#1f1f2e'
+            // });
             choiseLabel1 = game.add.text(game.world.centerX - 310, game.world.centerY - 150, 'CONTINUE', {
                 font: 'bold 40px Algerian',
-                fill: '#0a0a0f',
+                fill: '#fff',
 
             });
             choiseLabel2 = game.add.text(game.world.centerX - 350, game.world.centerY - 50, 'SOUND ON/OFF', {
                 font: 'bold 40px Algerian',
-                fill: '#0a0a0f',
+                fill: '#fff',
             });
             choiseLabel3 = game.add.text(game.world.centerX - 350, game.world.centerY + 50, 'BACK TO MENU', {
                 font: 'bold 40px Algerian',
-                fill: '#0a0a0f'
+                fill: '#fff'
             });
 
         });
@@ -189,18 +191,18 @@ MainGame.prototype = {
 
                     if (event.x > (x1 + 50) && event.x < x2 - 80 && event.y < (y1 + 40)) {
                         menu.destroy();
-                        choiseLabel.destroy();
+                        // choiseLabel.destroy();
                         choiseLabel1.destroy();
                         choiseLabel2.destroy();
                         choiseLabel3.destroy();
                         game.paused = false;
                     }
                     if (event.y > y1 + 100 && event.y < y2 - 50) {
-                      sound = !sound;
+                        sound = !sound;
                     }
                     if (event.y > y1 + 200) {
                         menu.destroy();
-                        choiseLabel.destroy();
+                        // choiseLabel.destroy();
                         choiseLabel1.destroy();
                         choiseLabel2.destroy();
                         choiseLabel3.destroy();
@@ -216,6 +218,8 @@ MainGame.prototype = {
     },
 
     update: function(game) {
+
+
         game.physics.arcade.collide(player1Group, layer);
         game.physics.arcade.collide(player2Group, layer);
         game.physics.arcade.collide(player1Group, player2Group);
@@ -312,6 +316,7 @@ MainGame.prototype = {
         }
         game.physics.arcade.overlap(flag1, player1Group, tank1TakeFlag);
         game.physics.arcade.overlap(flag2, player2Group, tank2TakeFlag);
+        console.log(sound);
 
     },
     render: function(game) {
@@ -323,8 +328,8 @@ MainGame.prototype = {
 function onBulletHitWallBrick(bulletPlayerGroup, wallbrickGroup) {
     bulletPlayerGroup.kill();
     wallbrickGroup.kill();
-    if(sound)
-    bullethitwall.play();
+    if (sound)
+        bullethitwall.play();
 }
 
 function onBulletHitLayer(bulletPlayerGroup, layer) {
@@ -337,8 +342,8 @@ function onBullet1HitPlayer2(bulletPlayer1Sprite, player2Sprite) {
     if (!player2Sprite.alive) {
 
         player2Death = 1;
-        if(sound)
-        bullethitplayer.play();
+        if (sound)
+            bullethitplayer.play();
     }
 }
 
@@ -349,8 +354,8 @@ function onBullet2HitPlayer1(bulletPlayer2Sprite, player1Sprite) {
     if (!player1Sprite.alive) {
 
         player1Death = 1;
-        if(sound)
-        bullethitplayer.play();
+        if (sound)
+            bullethitplayer.play();
     }
 }
 
