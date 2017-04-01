@@ -12,7 +12,7 @@ Win1.prototype = {
         game.add.image(0, 0, 'background');
         // Tạo button Restart
       //353x80
-        this.createButton(game, "", game.world.width- 500, game.world.height -180, 353, 80,
+        this.createButton(game, "", game.world.width- 170, game.world.height -180, 353, 80,
             function() {
                 this.state.start("MainGame");
             });
