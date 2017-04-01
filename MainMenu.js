@@ -6,17 +6,16 @@ var background;
 var titleScreen;
 MainMenu.prototype = {
     preload: function(game) {
-        game.load.image('background', 'assets/main-menu.png');
-        game.load.image('button', 'assets/button1.png');
-        game.load.image('about', 'assets/About.png');
+        game.load.image('background', 'assets/background-menu.png');
+        game.load.image('button', 'assets/start.png');
     },
 
     create: function(game) {
 
-        background = game.add.tileSprite(0, 0, 1280, 640, 'background');
+        background = game.add.tileSprite(0, 0, 960, 640, 'background');
 
         // Tạo button start
-        this.createButton(game, "Start", game.world.centerX + 10, game.world.centerY - 100, 100, 50,
+        this.createButton(game, "", game.world.centerX -225, game.world.centerY - 120, 246, 89,
             function() {
                 this.state.start("Preloader");
             });
