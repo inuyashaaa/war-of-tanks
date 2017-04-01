@@ -12,7 +12,7 @@ Preloader.prototype = {
 
         //Load Map bằng JSON
         // game.load.tilemap('map', 'assets/maps/level1.json', null, Phaser.Tilemap.TILED_JSON);
-        game.load.tilemap('map', 'assets/maps/level2.json', null, Phaser.Tilemap.TILED_JSON);
+        game.load.tilemap('map', 'assets/maps/map4.json', null, Phaser.Tilemap.TILED_JSON);
         game.load.image('wall_brick', 'assets/images/wall_brick.png');
         game.load.image('wall_steel', 'assets/images/wall_steel.png');
         game.load.image('water_1', 'assets/images/water_1.2.png');

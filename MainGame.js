@@ -11,7 +11,6 @@ var bulletPlayer2Group;
 var wallbrickGroup;
 var waterGroup;
 var treeGroup;
-
 var player1Group;
 var player2Group;
 var players = [];
@@ -47,6 +46,13 @@ MainGame.prototype = {
         //Tạo group cho gạch
         wallbrickGroup = game.add.group();
         wallbrickGroup.enableBody = true;
+        //Tạo Group đạn
+        bulletPlayer1Group = game.add.physicsGroup();
+        bulletPlayer2Group = game.add.physicsGroup();
+
+        //Tạo Group player
+        player1Group = game.add.physicsGroup();
+        player2Group = game.add.physicsGroup();
 
         //Tạo group cho nước
         waterGroup = game.add.group();
@@ -70,7 +76,9 @@ MainGame.prototype = {
         map.createFromObjects('Object Layer 1', 7, 'trees', 0, true, false, treeGroup);
         wallbrickGroup.setAll('body.immovable', true);
         waterGroup.setAll('body.immovable', true);
+        waterGroup.setAll('alpha', 0.9);
         treeGroup.setAll('body.immovable', true);
+        treeGroup.setAll("alpha", 0.8);
         //Tạo âm thanh
 
         hit2 = game.add.audio('hit2');
@@ -234,6 +242,7 @@ MainGame.prototype = {
             wallbrickGroup,
             onBulletHitWallBrick
         );
+
         game.physics.arcade.overlap(
             bulletPlayer2Group,
             wallbrickGroup,
