@@ -8,6 +8,8 @@ MainMenu.prototype = {
     preload: function(game) {
         game.load.image('background', 'assets/background-menu.png');
         game.load.image('button', 'assets/start.png');
+        game.load.image('howtoplay','assets/howtoplay.png');
+        game.load.image('about','assets/about.png');
     },
 
     create: function(game) {
@@ -20,16 +22,15 @@ MainMenu.prototype = {
                 this.state.start("Preloader");
             });
         //Tạo button About
-        this.createButton(game, "How to play", game.world.centerX + 10, game.world.centerY - 20, 220, 50,
+
+        this.createButton1(game, "", game.world.centerX - 200, game.world.centerY -5, 500, 115,
             function() {
                 this.state.start("Howtoplay");
             });
-        this.createButton(game, "About", game.world.centerX + 10, game.world.centerY +70, 110, 50,
+        this.createButton2(game, "About", game.world.centerX - 221, game.world.centerY +114, 350, 95,
             function() {
                 this.state.start("About");
             });
-        // titleScreen = game.add.sprite(game.world.centerX, game.world.centerY - 192, 'titleScreen');
-        // titleScreen.anchor.setTo(0.5, 0.5);
     },
     // Hàm tạo button
     createButton: function(game, string, x, y, w, h, callback) {
@@ -37,12 +38,22 @@ MainMenu.prototype = {
         button1.anchor.setTo(0.5, 0.5);
         button1.width = w;
         button1.height = h;
-        var txt = game.add.text(button1.x, button1.y, string, {
-            font: "40px Arial",
-            fill: "#ffffff",
-            align: "center",
 
-        });
-        txt.anchor.setTo(0.5, 0.5);
+    },
+    createButton1: function(game, string, x, y, w, h, callback) {
+        var button1 = game.add.button(x, y, 'howtoplay', callback, this, 2, 1, 0);
+        button1.anchor.setTo(0.5, 0.5);
+        button1.width = w;
+        button1.height = h;
+
+    },
+    createButton2: function(game, string, x, y, w, h, callback) {
+        var button1 = game.add.button(x, y, 'about', callback, this, 2, 1, 0);
+        button1.anchor.setTo(0.5, 0.5);
+        button1.width = w;
+        button1.height = h;
+
     }
+
+
 };
