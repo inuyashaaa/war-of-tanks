@@ -3,7 +3,7 @@ class PlayerController {
         this.sprite = physicsGroup.create(x, y, spriteName);
         this.sprite.anchor = new Phaser.Point(0.5, 0.5);
         this.sprite.body.collideWorldBounds = true;
-        this.sprite.body.setSize(29, 29, 0, 0);
+        this.sprite.body.setSize(28, 28, 0, 0);
         this.configs = configs;
         this.timeSinceLastFire = 0;
         this.game = game;

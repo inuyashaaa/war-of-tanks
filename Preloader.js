@@ -11,10 +11,12 @@ Preloader.prototype = {
         game.load.setPreloadSprite(game.preloadBar);
 
         //Load Map bằng JSON
-        game.load.tilemap('map', 'assets/maps/level1.json', null, Phaser.Tilemap.TILED_JSON);
+        // game.load.tilemap('map', 'assets/maps/level1.json', null, Phaser.Tilemap.TILED_JSON);
+        game.load.tilemap('map', 'assets/maps/level2.json', null, Phaser.Tilemap.TILED_JSON);
         game.load.image('wall_brick', 'assets/images/wall_brick.png');
         game.load.image('wall_steel', 'assets/images/wall_steel.png');
-        game.load.image('water_1', 'assets/images/water_1.png');
+        game.load.image('water_1', 'assets/images/water_1.2.png');
+        game.load.image('trees', 'assets/images/trees_1.png');
 
         //Load player
         game.load.image('player1', 'assets/images/tank_player1_up_c0_t1_s3.png');
@@ -27,7 +29,8 @@ Preloader.prototype = {
         game.load.audio('boom', 'assets/sound/explosion_1.ogg');
         game.load.audio('hit2', 'assets/sound/bullet_hit_2.ogg');
         game.load.audio('shot', 'assets/sound/bullet_shot.ogg');
-        //laod health
+
+        //Load health
         game.load.image('healthBar', 'assets/images/healthBar.png');
         game.load.image('healthBarBG', 'assets/images/healthBarBG.png');
     },
