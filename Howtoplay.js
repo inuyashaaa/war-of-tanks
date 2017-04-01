@@ -6,8 +6,8 @@ var background;
 var titleScreen;
 Howtoplay.prototype = {
     preload: function(game) {
-        game.load.image('background', 'assets/background-howtoplay.png');
-        game.load.image('button', 'assets/button1.png');
+        game.load.image('background', 'assets/howtoplay-background.png');
+        game.load.image('button1', 'assets/back-howtoplay.png');
 
     },
 
@@ -15,8 +15,8 @@ Howtoplay.prototype = {
 
 
       game.add.image(0,0, 'background');
-        // Tạo button Comback
-        this.createButton(game, "Comback", 875, 615, 170, 55,
+        // Tạo button Back 222x89
+        this.createButton(game, "", game.world.width-129, game.world.height-89, 222, 89,
             function() {
                 this.state.start("MainMenu");
             });
@@ -31,7 +31,7 @@ Howtoplay.prototype = {
     },
     // Hàm tạo button
     createButton: function(game, string, x, y, w, h, callback) {
-        var button1 = game.add.button(x, y, 'button', callback, this, 2, 1, 0);
+        var button1 = game.add.button(x, y, 'button1', callback, this, 2, 1, 0);
         button1.anchor.setTo(0.5, 0.5);
         button1.width = w;
         button1.height = h;

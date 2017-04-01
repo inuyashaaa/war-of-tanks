@@ -7,8 +7,8 @@ var background;
 var titleScreen;
 About.prototype = {
     preload: function(game) {
-        game.load.image('background', 'assets/About.png');
-        game.load.image('button', 'assets/button1.png');
+        game.load.image('background', 'assets/background-about.png');
+        game.load.image('button', 'assets/back-about.png');
 
     },
 
@@ -16,8 +16,8 @@ About.prototype = {
       // Anh em thấy background nào đẹp thì thay vào
         background = game.add.tileSprite(0, 0, 960, 640, 'background');
 
-        // Tạo button start
-        this.createButton(game, "Comback",875,615 , 170, 55,
+        // Tạo button Back 274x132
+        this.createButton(game, "",game.world.width-167,game.world.height-115  , 274, 132,
             function() {
                 this.state.start("MainMenu");
             });
