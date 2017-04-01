@@ -28,7 +28,7 @@ var checkSound = 1;
 var menu;
 MainGame.prototype = {
     create: function(game) {
-        game.stage.backgroundColor = '#337799';
+        game.stage.backgroundColor = '#363636';
 
         game.physics.startSystem(Phaser.Physics.ARCADE);
         keyboard = game.input.keyboard;
@@ -54,18 +54,19 @@ MainGame.prototype = {
         player1Group = game.add.physicsGroup();
         player2Group = game.add.physicsGroup();
 
+        //Tạo Group đạn
+        bulletPlayer1Group = game.add.physicsGroup();
+        bulletPlayer2Group = game.add.physicsGroup();
+
+        //Tạo Group player
+        player1Group = game.add.physicsGroup();
+        player2Group = game.add.physicsGroup();
+
         //Tạo group cho nước
         waterGroup = game.add.group();
         waterGroup.enableBody = true;
         treeGroup = game.add.group();
         treeGroup.enableBody = true;
-
-        //Tạo Group đạn
-        bulletPlayer1Group = game.add.physicsGroup();
-        bulletPlayer2Group = game.add.physicsGroup();
-        //Tạo Group player
-        player1Group = game.add.physicsGroup();
-        player2Group = game.add.physicsGroup();
 
         //Group health
         healthBarGroup = game.add.physicsGroup();
@@ -96,7 +97,7 @@ MainGame.prototype = {
                     left: Phaser.Keyboard.A,
                     right: Phaser.Keyboard.D,
                     fire: Phaser.Keyboard.F,
-                    cooldown: 0.5
+                    cooldown: 0.3
                 },
                 game
             )
@@ -110,7 +111,7 @@ MainGame.prototype = {
                     left: Phaser.Keyboard.LEFT,
                     right: Phaser.Keyboard.RIGHT,
                     fire: Phaser.Keyboard.SPACEBAR,
-                    cooldown: 0.5
+                    cooldown: 0.3
                 },
                 game
             )
