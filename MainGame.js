@@ -87,7 +87,7 @@ MainGame.prototype = {
                     left: Phaser.Keyboard.A,
                     right: Phaser.Keyboard.D,
                     fire: Phaser.Keyboard.F,
-                    cooldown: 0.5
+                    cooldown: 0.2
                 },
                 game
             )
@@ -101,7 +101,7 @@ MainGame.prototype = {
                     left: Phaser.Keyboard.LEFT,
                     right: Phaser.Keyboard.RIGHT,
                     fire: Phaser.Keyboard.SPACEBAR,
-                    cooldown: 0.5
+                    cooldown: 0.2
                 },
                 game
             )

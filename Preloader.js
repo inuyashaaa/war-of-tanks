@@ -25,7 +25,7 @@ Preloader.prototype = {
         game.load.image('bullet2', 'assets/bullet2.png');
         game.load.atlasJSONHash('assets', 'assets/assets.png', 'assets/assets.json');
 
-        //Load âm thank
+        //Load âm thanh
         game.load.audio('boom', 'assets/sound/explosion_1.ogg');
         game.load.audio('hit2', 'assets/sound/bullet_hit_2.ogg');
         game.load.audio('shot', 'assets/sound/bullet_shot.ogg');
@@ -33,6 +33,8 @@ Preloader.prototype = {
         //Load health
         game.load.image('healthBar', 'assets/images/healthBar.png');
         game.load.image('healthBarBG', 'assets/images/healthBarBG.png');
+
+        //Load item
     },
 
     create: function(game) {
