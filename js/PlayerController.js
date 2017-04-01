@@ -9,7 +9,7 @@ class PlayerController {
         this.game = game;
         this.point = new Phaser.Point(0, -1);
         this.spriteName = spriteName;
-        this.sprite.health = 10;
+        this.sprite.health = 1;
     }
     update() {
 

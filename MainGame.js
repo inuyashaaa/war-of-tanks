@@ -90,8 +90,8 @@ MainGame.prototype = {
         players = [];
         players.push(
             new Player1Controller(
-                200,
-                200, {
+                48,
+                48, {
                     up: Phaser.Keyboard.W,
                     down: Phaser.Keyboard.S,
                     left: Phaser.Keyboard.A,
@@ -104,8 +104,8 @@ MainGame.prototype = {
         );
         players.push(
             new Player2Controller(
-                500,
-                500, {
+                912,
+                48, {
                     up: Phaser.Keyboard.UP,
                     down: Phaser.Keyboard.DOWN,
                     left: Phaser.Keyboard.LEFT,
