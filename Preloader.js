@@ -20,13 +20,12 @@ Preloader.prototype = {
 
         //Load player
         game.load.image('player1', 'assets/images/tank_player1_up_c0_t1_s3.png');
-        // game.load.image('player1_up', 'assets/tank1_up.png', 32, 32);
         game.load.image('player2', 'assets/images/tank_armor_up_c1_t2.png');
         game.load.image('bullet1', 'assets/bullet1.png');
         game.load.image('bullet2', 'assets/bullet2.png');
         game.load.atlasJSONHash('assets', 'assets/assets.png', 'assets/assets.json');
 
-        //Load âm thanh
+        //Load âm thank
         game.load.audio('boom', 'assets/sound/explosion_1.ogg');
         game.load.audio('hit2', 'assets/sound/bullet_hit_2.ogg');
         game.load.audio('shot', 'assets/sound/bullet_shot.ogg');
@@ -34,8 +33,8 @@ Preloader.prototype = {
         //Load health
         game.load.image('healthBar', 'assets/images/healthBar.png');
         game.load.image('healthBarBG', 'assets/images/healthBarBG.png');
-
-        //Load item
+        //Load background-menu
+        game.load.image('background-menu','assets/background-menu1.png');
     },
 
     create: function(game) {

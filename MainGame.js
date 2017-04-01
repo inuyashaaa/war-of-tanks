@@ -11,6 +11,7 @@ var bulletPlayer2Group;
 var wallbrickGroup;
 var waterGroup;
 var treeGroup;
+
 var player1Group;
 var player2Group;
 var players = [];
@@ -20,12 +21,15 @@ var bullets = [];
 var healthBarP1;
 var healthBarP2;
 var textHealth;
-
+var player1Death =0;
+var player2Death =0;
 //Âm thanh
 var checkSound = 1;
+
+var menu;
 MainGame.prototype = {
     create: function(game) {
-        game.stage.backgroundColor = '#1C1C1C';
+        game.stage.backgroundColor = '#337799';
 
         game.physics.startSystem(Phaser.Physics.ARCADE);
         keyboard = game.input.keyboard;
@@ -44,19 +48,18 @@ MainGame.prototype = {
         wallbrickGroup = game.add.group();
         wallbrickGroup.enableBody = true;
 
-        //Tạo Group player
-        player1Group = game.add.physicsGroup();
-        player2Group = game.add.physicsGroup();
-
-        //Tạo Group đạn
-        bulletPlayer1Group = game.add.physicsGroup();
-        bulletPlayer2Group = game.add.physicsGroup();
-
         //Tạo group cho nước
         waterGroup = game.add.group();
         waterGroup.enableBody = true;
         treeGroup = game.add.group();
         treeGroup.enableBody = true;
+
+        //Tạo Group đạn
+        bulletPlayer1Group = game.add.physicsGroup();
+        bulletPlayer2Group = game.add.physicsGroup();
+        //Tạo Group player
+        player1Group = game.add.physicsGroup();
+        player2Group = game.add.physicsGroup();
 
         //Group health
         healthBarGroup = game.add.physicsGroup();
@@ -67,15 +70,12 @@ MainGame.prototype = {
         map.createFromObjects('Object Layer 1', 7, 'trees', 0, true, false, treeGroup);
         wallbrickGroup.setAll('body.immovable', true);
         waterGroup.setAll('body.immovable', true);
-        // waterGroup.setAll('alpha', 0.9);
         treeGroup.setAll('body.immovable', true);
-        // treeGroup.setAll("alpha", 0.9);
         //Tạo âm thanh
+
         hit2 = game.add.audio('hit2');
         shot = game.add.audio('shot');
         boom = game.add.audio('boom');
-
-
 
         //Tao mang de luu nguoi choi
         players = [];
@@ -88,7 +88,7 @@ MainGame.prototype = {
                     left: Phaser.Keyboard.A,
                     right: Phaser.Keyboard.D,
                     fire: Phaser.Keyboard.F,
-                    cooldown: 0.2
+                    cooldown: 0.5
                 },
                 game
             )
@@ -102,7 +102,7 @@ MainGame.prototype = {
                     left: Phaser.Keyboard.LEFT,
                     right: Phaser.Keyboard.RIGHT,
                     fire: Phaser.Keyboard.SPACEBAR,
-                    cooldown: 0.2
+                    cooldown: 0.5
                 },
                 game
             )
@@ -127,30 +127,84 @@ MainGame.prototype = {
             new Phaser.Point(650, 10),
             players[1]
         );
-        //Button Quit
-        this.createButton(game, "Quit", 910, 625, 140, 30,
-            function() {
-                this.state.start("MainMenu");
-            });
-        this.createButton(game, "Quit", 910, 625, 140, 30,
-            function() {
-                this.state.start("MainMenu");
-            });
 
-    },
-    //Tao button
-    createButton: function(game, string, x, y, w, h, callback) {
-        var button1 = game.add.button(x, y, 'button', callback, this, 2, 1, 0);
-        button1.anchor.setTo(0.5, 0.5);
-        button1.width = w;
-        button1.height = h;
-        var txt = game.add.text(button1.x, button1.y, string, {
-            font: "25px Arial",
-            fill: "#ffffff",
-            align: "center",
+
+        //Button Quit
+
+
+
+        //press ESC to pause or unpause
+        pause_label = game.add.text(game.world.centerX, game.world.height - 30, 'PAUSE', {
+            font: 'bold 30px Arial',
+            fill: '#000'
+        });
+        pause_label.inputEnabled = true;
+        pause_label.events.onInputUp.add(function() {
+            // When the paus button is pressed, we pause the game
+            game.paused = true;
+
+            // Then add the menu
+            menu = game.add.sprite(game.world.centerX, game.world.centerY, 'background-menu');
+            menu.anchor.setTo(0.5, 0.5);
+
+            // And a label to illustrate which menu item was chosen. (This is not necessary)
+
+
+            choiseLabel = game.add.text(game.world.centerX - 220, game.world.centerY - 250, 'WAR OF TANKS', {
+                font: "bold 60px Arial",
+                fill: '#0040ff'
+            });
+            choiseLabel1 = game.add.text(game.world.centerX - 80, game.world.centerY - 150, 'Continue', {
+                font: 'bold 40px Arial',
+                fill: '#ff0000',
+
+            });
+            choiseLabel2 = game.add.text(game.world.centerX - 110, game.world.centerY - 50, 'Sound On/Off', {
+                font: 'bold 40px Arial',
+                fill: '#ff0000',
+            });
+            choiseLabel3 = game.add.text(game.world.centerX - 110, game.world.centerY + 50, 'Back to Menu', {
+                font: 'bold 40px Arial',
+                fill: '#ff0000'
+            });
 
         });
-        txt.anchor.setTo(0.5, 0.5);
+        game.input.onDown.add(unpause, self);
+
+        function unpause(event) {
+            // Only act if paused
+            if (game.paused) {
+                // Calculate the corners of the menu
+                var x1 = game.world.centerX - 120;
+                var x2 = game.world.centerX + 130;
+                var y1 = game.world.centerY - 150;
+                var y2 = game.world.centerY + 90;
+
+                // Check if the click was inside the menu
+                if (event.x > x1 && event.x < x2 && event.y > y1 && event.y < y2) {
+                    // The choicemap is an array that will help us see which item was clicked
+                    if (event.x > (x1 + 50) && event.x < x2 - 40 && event.y < (y1 + 60)) {
+                        menu.destroy();
+                        choiseLabel.destroy();
+                        choiseLabel1.destroy();
+                        choiseLabel2.destroy();
+                        choiseLabel3.destroy();
+                        game.paused = false;
+                    }
+                    if (event.y > y1 + 100 && event.y < y2 - 100) {
+
+                    }
+                    if (event.y > y1 + 200) {
+
+                    }
+
+                }
+
+
+            }
+        }
+
+
     },
     update: function(game) {
         game.physics.arcade.collide(player1Group, layer);
@@ -160,7 +214,6 @@ MainGame.prototype = {
         game.physics.arcade.collide(player2Group, wallbrickGroup);
         game.physics.arcade.collide(player1Group, waterGroup);
         game.physics.arcade.collide(player2Group, waterGroup);
-
         players.forEach(
             function(ship) {
                 ship.update();
@@ -207,10 +260,24 @@ MainGame.prototype = {
             player1Group,
             onBullet2HitPlayer1
         );
+        if(player1Death ==1){
+          player1Death =0;
+          this.state.start('Win2');
+
+        }
+        if(player2Death ==1){
+          player2Death =0;
+          this.state.start('Win1');
+
+        }
+
     },
     render: function(game) {
-        // game.debug.body(players);
-    }
+        game.debug.body(players);
+    },
+    // win: function abc(){
+    //   game.state.start("Win1");
+    // }
 
 };
 
@@ -229,6 +296,7 @@ function onBullet1HitPlayer2(bulletPlayer1Sprite, player2Sprite) {
     player2Sprite.damage(1);
     if (!player2Sprite.alive) {
         boom.play();
+        player2Death =1;
     }
 }
 
@@ -237,5 +305,8 @@ function onBullet2HitPlayer1(bulletPlayer2Sprite, player1Sprite) {
     player1Sprite.damage(1);
     if (!player1Sprite.alive) {
         boom.play();
+        player1Death =1;
+
+
     }
 }

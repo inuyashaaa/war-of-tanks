@@ -11,6 +11,9 @@
     <script src="MainGame.js"></script>
     <script src="About.js"></script>
     <script src="Howtoplay.js"></script>
+    <script src="Win1.js"></script>
+    <script src="Win2.js"></script>
+
 
     <script src="js/PlayerController.js"></script>
     <script src="js/Player1Controller.js"></script>
@@ -25,13 +28,16 @@
 <body>
     <script type="text/javascript">
         window.onload = function() {
-            var game = new Phaser.Game(1280, 640, Phaser.CANVAS, '');
+            var game = new Phaser.Game(960, 640, Phaser.CANVAS, '');
             game.state.add('Boot', Boot);
             game.state.add('Preloader', Preloader);
             game.state.add('MainMenu', MainMenu);
             game.state.add('MainGame', MainGame);
             game.state.add('About', About);
+
             game.state.add('Howtoplay', Howtoplay);
+            game.state.add('Win1', Win1);
+            game.state.add('Win2', Win2);
 
 
             game.state.start('Boot');

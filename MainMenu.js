@@ -13,7 +13,7 @@ MainMenu.prototype = {
 
     create: function(game) {
 
-        background = game.add.tileSprite(0, 0, 960, 640, 'background');
+        background = game.add.tileSprite(0, 0, 1280, 640, 'background');
 
         // Tạo button start
         this.createButton(game, "Start", game.world.centerX + 10, game.world.centerY - 100, 100, 50,
