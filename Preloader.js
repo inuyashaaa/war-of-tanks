@@ -36,8 +36,8 @@ Preloader.prototype = {
         game.load.audio('shot', 'assets/sound/bullet_shot.ogg');
 
         //Load health
-        game.load.image('healthBar', 'assets/images/healthBar.png');
-        game.load.image('healthBarBG', 'assets/images/healthBarBG.png');
+        // game.load.image('healthBar', 'assets/images/healthBar.png');
+        // game.load.image('healthBarBG', 'assets/images/healthBarBG.png');
         //Load background-menu
         game.load.image('background-menu','assets/background-menu1.png');
     },

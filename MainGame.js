@@ -17,9 +17,9 @@ var players = [];
 var bullets = [];
 
 //Tạo các biến đẻ hiển thị thanh máu
-var healthBarP1;
-var healthBarP2;
-var textHealth;
+// var healthBarP1;
+// var healthBarP2;
+// var textHealth;
 var player1Death = 0;
 var player2Death = 0;
 //Âm thanh
@@ -71,7 +71,7 @@ MainGame.prototype = {
         treeGroup.enableBody = true;
 
         //Group health
-        healthBarGroup = game.add.physicsGroup();
+        // healthBarGroup = game.add.physicsGroup();
 
         //Tạo map từ Object trong tilemap và chuyển chúng vào group tương ứng
         map.createFromObjects('Object Layer 1', 2, 'wall_brick', 0, true, false, wallbrickGroup);
@@ -125,25 +125,25 @@ MainGame.prototype = {
             )
         );
 
-        //health
-        textHealth = game.add.text(20, 0, 'P1', {
-            fontSize: '8px',
-            fill: '#000000'
-        });
-        textHealth = game.add.text(615, 0, 'P2', {
-            fontSize: '8px',
-            fill: '#000000'
-        });
-        healthb = game.add.image('healthBar');
-        healthbbg = game.add.image('healthBarBG');
-        healthBarP1 = new HealthBarController(
-            new Phaser.Point(50, 10),
-            players[0]
-        );
-        healthBarP2 = new HealthBarController(
-            new Phaser.Point(650, 10),
-            players[1]
-        );
+        // //health
+        // textHealth = game.add.text(20, 0, 'P1', {
+        //     fontSize: '8px',
+        //     fill: '#000000'
+        // });
+        // textHealth = game.add.text(615, 0, 'P2', {
+        //     fontSize: '8px',
+        //     fill: '#000000'
+        // });
+        // healthb = game.add.image('healthBar');
+        // healthbbg = game.add.image('healthBarBG');
+        // healthBarP1 = new HealthBarController(
+        //     new Phaser.Point(50, 10),
+        //     players[0]
+        // );
+        // healthBarP2 = new HealthBarController(
+        //     new Phaser.Point(650, 10),
+        //     players[1]
+        // );
 
         //Button Quit
 
@@ -231,8 +231,8 @@ MainGame.prototype = {
             }
         );
 
-        healthBarP1.update();
-        healthBarP2.update();
+        // healthBarP1.update();
+        // healthBarP2.update();
 
         bullets.forEach(function(bullet) {
             if (bullet.update && typeof bullet.update == "function") {
