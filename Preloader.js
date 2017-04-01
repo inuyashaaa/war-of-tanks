@@ -19,11 +19,16 @@ Preloader.prototype = {
         game.load.image('trees', 'assets/images/trees_1.png');
 
         //Load player
-        game.load.image('player1', 'assets/images/tank_player1_up_c0_t1_s3.png');
-        game.load.image('player2', 'assets/images/tank_armor_up_c1_t2.png');
+        game.load.image('player1', 'assets/images/up3.png');
+        game.load.image('player2', 'assets/images/up3_2.png');
+        // game.load.spritesheet('boom_animation', 'assets/images/boom_animation.png', 32, 32);
+        // game.load.spritesheet('tank_animation', 'assets/images/tank_animation.png', 32, 32);
         game.load.image('bullet1', 'assets/bullet1.png');
         game.load.image('bullet2', 'assets/bullet2.png');
         game.load.atlasJSONHash('assets', 'assets/assets.png', 'assets/assets.json');
+
+        //load flag
+        game.load.image('flag', 'assets/images/bang.png');
 
         //Load âm thank
         game.load.audio('boom', 'assets/sound/explosion_1.ogg');

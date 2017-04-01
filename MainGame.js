@@ -25,6 +25,8 @@ var player2Death =0;
 //Âm thanh
 var checkSound = 1;
 
+var flag1;
+var flag2;
 var menu;
 MainGame.prototype = {
     create: function(game) {
@@ -85,6 +87,12 @@ MainGame.prototype = {
         hit2 = game.add.audio('hit2');
         shot = game.add.audio('shot');
         boom = game.add.audio('boom');
+
+        //flag
+        flag1 = game.add.sprite(896,580, 'flag');
+        flag1.enableBody = true;
+        flag2 = game.add.sprite(32,580, 'flag');
+        flag2.enableBody = true;
 
         //Tao mang de luu nguoi choi
         players = [];
@@ -223,6 +231,11 @@ MainGame.prototype = {
         game.physics.arcade.collide(player2Group, wallbrickGroup);
         game.physics.arcade.collide(player1Group, waterGroup);
         game.physics.arcade.collide(player2Group, waterGroup);
+
+        //
+        // game.physics.arcade.collide(player1Group, flag1);
+        // game.physics.arcade.collide(player2Group, flag2);
+        //
         players.forEach(
             function(ship) {
                 ship.update();
@@ -270,6 +283,19 @@ MainGame.prototype = {
             player1Group,
             onBullet2HitPlayer1
         );
+
+        //overlap flag
+        // game.physics.arcade.overlap(
+        //   player1Group,
+        //   flag1,
+        //   onPlayer1HaveFlag
+        // )
+        // game.physics.arcade.overlap(
+        //   player2Group,
+        //   flag2,
+        //   onPlayer2HaveFlag
+        // )
+
         if(player1Death ==1){
           player1Death =0;
           this.state.start('Win2');
@@ -316,7 +342,11 @@ function onBullet2HitPlayer1(bulletPlayer2Sprite, player1Sprite) {
     if (!player1Sprite.alive) {
         boom.play();
         player1Death =1;
-
-
     }
+}
+function onPlayer1HaveFlag(){
+  console.log("aaa");
+}
+function onPlayer2HaveFlag(){
+  console.log("aa");
 }

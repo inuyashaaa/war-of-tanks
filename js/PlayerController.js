@@ -1,6 +1,10 @@
 class PlayerController {
     constructor(x, y, configs, spriteName, physicsGroup, game) {
         this.sprite = physicsGroup.create(x, y, spriteName);
+        // this.sprite.animations.add('up', [9,10,11], 10, true);
+        // this.sprite.animations.add('down', [0,1,2], 10, true);
+        // this.sprite.animations.add('left', [3,4,5], 10, true);
+        // this.sprite.animations.add('right', [6,7,8], 10, true);
         this.sprite.anchor = new Phaser.Point(0.5, 0.5);
         this.sprite.body.collideWorldBounds = true;
         this.sprite.body.setSize(28, 28, 0, 0);
@@ -15,19 +19,22 @@ class PlayerController {
 
         this.sprite.body.velocity.x = 0;
         this.sprite.body.velocity.y = 0;
-        //Thiet lap viec di chuyen cua tank
         if (keyboard.isDown(this.configs.up)) {
             this.sprite.angle = 0;
+            // this.sprite.animations.play('up');
             this.sprite.body.velocity.y = -PlayerController.TANK_SPEED;
         } else if (keyboard.isDown(this.configs.down)) {
             this.sprite.angle = -180;
+            // this.sprite.animations.play('down');
             this.sprite.body.velocity.y = PlayerController.TANK_SPEED;
         } else if (keyboard.isDown(this.configs.left)) {
             this.sprite.angle = -90;
+            // this.sprite.animations.play('left');
             this.sprite.body.velocity.x = -PlayerController.TANK_SPEED;
 
         } else if (keyboard.isDown(this.configs.right)) {
             this.sprite.angle = 90;
+            // this.sprite.animations.play('right');
             this.sprite.body.velocity.x = PlayerController.TANK_SPEED;
         }
         if (this.sprite.angle == -180) {
