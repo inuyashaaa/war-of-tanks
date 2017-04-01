@@ -2,8 +2,8 @@ class HealthBarController {
   constructor(healthBarPosition, fatherObject) {
     this.fatherObject = fatherObject;
     this.healthBar = healthBarGroup.create(healthBarPosition.x, healthBarPosition.y, 'healthBar');
-    this.healthBarBG = healthBarGroup.create(healthBarPosition.x+3, healthBarPosition.y-5, 'healthBarBG');
-    this.healthBar.anchor.setTo(0, 0.5);
+    this.healthBarBG = healthBarGroup.create(healthBarPosition.x+3, healthBarPosition.y+3, 'healthBarBG');
+    this.healthBarBG.scale.setTo(0, 0.5);
   }
 
   remove() {
