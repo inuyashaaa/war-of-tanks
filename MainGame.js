@@ -20,8 +20,8 @@ var bullets = [];
 var healthBarP1;
 var healthBarP2;
 var textHealth;
-var player1Death =0;
-var player2Death =0;
+var player1Death = 0;
+var player2Death = 0;
 //Âm thanh
 var checkSound = 1;
 
@@ -145,9 +145,7 @@ MainGame.prototype = {
             players[1]
         );
 
-
         //Button Quit
-
 
 
         //press ESC to pause or unpause
@@ -165,8 +163,6 @@ MainGame.prototype = {
             menu.anchor.setTo(0.5, 0.5);
 
             // And a label to illustrate which menu item was chosen. (This is not necessary)
-
-
             choiseLabel = game.add.text(game.world.centerX - 220, game.world.centerY - 250, 'WAR OF TANKS', {
                 font: "bold 60px Arial",
                 fill: '#0040ff'
@@ -208,16 +204,9 @@ MainGame.prototype = {
                         choiseLabel3.destroy();
                         game.paused = false;
                     }
-                    if (event.y > y1 + 100 && event.y < y2 - 100) {
-
-                    }
-                    if (event.y > y1 + 200) {
-
-                    }
-
+                    if (event.y > y1 + 100 && event.y < y2 - 100) {}
+                    if (event.y > y1 + 200) {}
                 }
-
-
             }
         }
 
@@ -283,37 +272,24 @@ MainGame.prototype = {
             player1Group,
             onBullet2HitPlayer1
         );
-
-        //overlap flag
-        // game.physics.arcade.overlap(
-        //   player1Group,
-        //   flag1,
-        //   onPlayer1HaveFlag
-        // )
-        // game.physics.arcade.overlap(
-        //   player2Group,
-        //   flag2,
-        //   onPlayer2HaveFlag
-        // )
-
-        if(player1Death ==1){
-          player1Death =0;
-          this.state.start('Win2');
-
+        if (player1Death == 1) {
+            player1Death = 0;
+            game.time.events.add(Phaser.Timer.SECOND * 2, function() {
+                player1Group.forEach(function(ship) {
+                    ship.reset(48, 48);
+                });
+            });
         }
-        if(player2Death ==1){
-          player2Death =0;
-          this.state.start('Win1');
-
-        }
+        // if (player2Death == 1) {
+        //     player2Death = 0;
+        //     this.state.start('Win1');
+        //
+        // }
 
     },
     render: function(game) {
         game.debug.body(players);
     },
-    // win: function abc(){
-    //   game.state.start("Win1");
-    // }
 
 };
 
@@ -332,21 +308,17 @@ function onBullet1HitPlayer2(bulletPlayer1Sprite, player2Sprite) {
     player2Sprite.damage(1);
     if (!player2Sprite.alive) {
         boom.play();
-        player2Death =1;
+        player2Death = 1;
     }
 }
 
 function onBullet2HitPlayer1(bulletPlayer2Sprite, player1Sprite) {
     bulletPlayer2Sprite.kill();
     player1Sprite.damage(1);
+    // player1Sprite.reset(48, 48);
     if (!player1Sprite.alive) {
         boom.play();
         player1Death =1;
     }
-}
-function onPlayer1HaveFlag(){
-  console.log("aaa");
-}
-function onPlayer2HaveFlag(){
-  console.log("aa");
+
 }

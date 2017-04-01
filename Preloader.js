@@ -16,7 +16,7 @@ Preloader.prototype = {
         game.load.image('wall_brick', 'assets/images/wall_brick.png');
         game.load.image('wall_steel', 'assets/images/wall_steel.png');
         game.load.image('water_1', 'assets/images/water_1.2.png');
-        game.load.image('trees', 'assets/images/trees_1.png');
+        game.load.image('trees', 'assets/images/123.png');
 
         //Load player
         game.load.image('player1', 'assets/images/up3.png');
