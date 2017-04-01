@@ -56,7 +56,6 @@ class PlayerController {
     }
     fire() {
         this.createBullet(this.point);
-
     }
     createBullet(direction) {
         if (this.spriteName == "player1") {
