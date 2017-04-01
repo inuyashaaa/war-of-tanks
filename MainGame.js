@@ -11,7 +11,6 @@ var bulletPlayer2Group;
 var wallbrickGroup;
 var waterGroup;
 var treeGroup;
-
 var player1Group;
 var player2Group;
 var players = [];
@@ -46,17 +45,14 @@ MainGame.prototype = {
         wallbrickGroup.enableBody = true;
 
         //Tạo group cho nước
-        waterGroup = game.add.group();
+        waterGroup = game.add.physicsGroup();
         waterGroup.enableBody = true;
-        treeGroup = game.add.group();
+        treeGroup = game.add.physicsGroup();
         treeGroup.enableBody = true;
 
         //Tạo Group đạn
         bulletPlayer1Group = game.add.physicsGroup();
         bulletPlayer2Group = game.add.physicsGroup();
-        //Tạo Group player
-        player1Group = game.add.physicsGroup();
-        player2Group = game.add.physicsGroup();
 
         //Group health
         healthBarGroup = game.add.physicsGroup();
@@ -67,14 +63,17 @@ MainGame.prototype = {
         map.createFromObjects('Object Layer 1', 7, 'trees', 0, true, false, treeGroup);
         wallbrickGroup.setAll('body.immovable', true);
         waterGroup.setAll('body.immovable', true);
-        waterGroup.setAll('alpha', 0.9);
+        // waterGroup.setAll('alpha', 0.9);
         treeGroup.setAll('body.immovable', true);
-        treeGroup.setAll("alpha", 0.9);
+        // treeGroup.setAll("alpha", 0.9);
         //Tạo âm thanh
-
         hit2 = game.add.audio('hit2');
         shot = game.add.audio('shot');
         boom = game.add.audio('boom');
+
+        //Tạo Group player
+        player1Group = game.add.physicsGroup();
+        player2Group = game.add.physicsGroup();
 
         //Tao mang de luu nguoi choi
         players = [];
@@ -208,6 +207,7 @@ MainGame.prototype = {
     },
     render: function(game) {
         game.debug.body(players);
+        game.debug.body(treeGroup);
     }
 
 };
