@@ -81,6 +81,11 @@ Howtoplay.prototype = {
             fill: '#fff',
             align: 'left'
         });
+        game.add.text(70, 540,'                                          K: Bật tắt âm thanh', {
+            font: '20px Comic Sans MS',
+            fill: '#fff',
+            align: 'left'
+        });
 
         // titleScreen = game.add.sprite(game.world.centerX, game.world.centerY - 192, 'titleScreen');
         // titleScreen.anchor.setTo(0.5, 0.5);

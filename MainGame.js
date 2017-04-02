@@ -20,7 +20,7 @@ var bullets = [];
 var player1Death = 0;
 var player2Death = 0;
 //Âm thanh
-var checkSound = 1;
+var checkSound = true;
 
 var flag1;
 var flag2;
@@ -29,6 +29,7 @@ var tank1Flag = 0;
 var tank2Flag = 0;
 var back_menu = 0;
 var sound = true;
+
 MainGame.prototype = {
     create: function(game) {
         game.stage.backgroundColor = '#363636';
@@ -49,7 +50,7 @@ MainGame.prototype = {
 
 
         // map.setCollisionBetween(15,16);
-        map.setCollision([15, 16, 375, 406, 422, 435],true);
+        map.setCollision([15, 16, 375, 406, 422, 435], true);
 
         //Tạo group cho gạch
         wallbrickGroup = game.add.group();
@@ -154,24 +155,25 @@ MainGame.prototype = {
             //     font: "bold 60px Algerian",
             //     fill: '#1f1f2e'
             // });
-            choiseLabel1 = game.add.text(game.world.centerX - 310, game.world.centerY - 150, 'CONTINUE', {
+            continues = game.add.text(game.world.centerX - 310, game.world.centerY - 150, 'CONTINUE', {
                 font: 'bold 40px Algerian',
                 fill: '#fff',
 
             });
-            choiseLabel2 = game.add.text(game.world.centerX - 350, game.world.centerY - 50, 'SOUND ON/OFF', {
+            restart = game.add.text(game.world.centerX - 310, game.world.centerY - 50, 'RESTART ', {
                 font: 'bold 40px Algerian',
                 fill: '#fff',
             });
-            choiseLabel3 = game.add.text(game.world.centerX - 350, game.world.centerY + 50, 'BACK TO MENU', {
+            backToMenu = game.add.text(game.world.centerX - 350, game.world.centerY + 50, 'BACK TO MENU', {
                 font: 'bold 40px Algerian',
                 fill: '#fff'
             });
 
-        });
-        game.input.onDown.add(unpause, self);
 
-        function unpause(event) {
+        });
+        game.input.onDown.add(choose, self);
+
+        function choose(event) {
             // Only act if paused
             if (game.paused) {
                 // Calculate the corners of the menu
@@ -186,20 +188,23 @@ MainGame.prototype = {
                     if (event.x > (x1 + 50) && event.x < x2 - 80 && event.y < (y1 + 40)) {
                         menu.destroy();
                         // choiseLabel.destroy();
-                        choiseLabel1.destroy();
-                        choiseLabel2.destroy();
-                        choiseLabel3.destroy();
+                        backToMenu.destroy();
+                        continues.destroy();
+                        restart.destroy();
                         game.paused = false;
                     }
                     if (event.y > y1 + 100 && event.y < y2 - 50) {
-                        sound = !sound;
+                        backToMenu.destroy();
+                        continues.destroy();
+                        restart.destroy();
+                        game.paused = false;
+                        game.state.start("MainGame");
                     }
                     if (event.y > y1 + 200) {
                         menu.destroy();
-                        // choiseLabel.destroy();
-                        choiseLabel1.destroy();
-                        choiseLabel2.destroy();
-                        choiseLabel3.destroy();
+                        continues.destroy();
+                        backToMenu.destroy();
+                        restart.destroy();
                         game.paused = false;
                         back_menu = 1;
                     }
@@ -208,6 +213,11 @@ MainGame.prototype = {
 
             }
         }
+        window.onkeydown = function(event) {
+            if (event.keyCode == "K".charCodeAt(0)) {
+              sound=!sound;
+            }
+          };
 
     },
 
