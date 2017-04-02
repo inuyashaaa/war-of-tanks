@@ -127,7 +127,7 @@ MainGame.prototype = {
                     down: Phaser.Keyboard.DOWN,
                     left: Phaser.Keyboard.LEFT,
                     right: Phaser.Keyboard.RIGHT,
-                    fire: Phaser.Keyboard.SHIFT,
+                    fire: Phaser.Keyboard.ENTER,
                     cooldown: 0.3
                 },
                 game
@@ -289,7 +289,7 @@ MainGame.prototype = {
             player1Death = 0;
             game.time.events.add(Phaser.Timer.SECOND * 2, function() {
                 player1Group.forEach(function(ship) {
-                    ship.reset(48, 48);
+                    ship.reset(40, 40);
                 });
             });
             if (tank1Flag == 1) {
@@ -303,7 +303,7 @@ MainGame.prototype = {
             player2Death = 0;
             game.time.events.add(Phaser.Timer.SECOND * 2, function() {
                 player2Group.forEach(function(ship) {
-                    ship.reset(912, 48);
+                    ship.reset(920, 40);
                 });
             });
             if (tank2Flag == 1) {
