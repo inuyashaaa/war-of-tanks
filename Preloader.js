@@ -1,5 +1,4 @@
-Preloader = function(game) {
-};
+Preloader = function(game) {};
 
 Preloader.prototype = {
     preload: function(game) {
@@ -7,12 +6,15 @@ Preloader.prototype = {
         game.time.advancedTiming = true;
 
         //Load Map bằng JSON
-        // game.load.tilemap('map', 'assets/maps/level1.json', null, Phaser.Tilemap.TILED_JSON);
-        game.load.tilemap('map', 'assets/maps/map4.json', null, Phaser.Tilemap.TILED_JSON);
-        game.load.image('wall_brick', 'assets/images/wall_brick.png');
+        // game.load.tilemap('map', 'assets/maps/map4.json', null, Phaser.Tilemap.TILED_JSON);
+        game.load.tilemap('map', 'assets/maps/map6.json', null, Phaser.Tilemap.TILED_JSON);
+        game.load.image('wall_brick', 'assets/wall_bricks.png');
         game.load.image('wall_steel', 'assets/images/wall_steel.png');
-        game.load.image('water_1', 'assets/images/water_1.2.png');
-        game.load.image('trees', 'assets/images/123.png');
+        game.load.image('water_1', 'assets/waters.png');
+        game.load.image('trees', 'assets/treesss.png');
+        game.load.image('depnhat', 'assets/depnhat.png');
+        game.load.image('basictiles', 'assets/basictiles.png');
+        game.load.image('set', 'assets/set.gif');
 
         //Load player
         game.load.image('player1', 'assets/images/up3.png');

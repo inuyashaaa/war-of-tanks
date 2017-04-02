@@ -2,6 +2,7 @@ MainGame = function(game) {};
 
 var map;
 var layer;
+var layer2;
 var player;
 var keyboard;
 
@@ -16,10 +17,6 @@ var player2Group;
 var players = [];
 var bullets = [];
 
-//Tạo các biến đẻ hiển thị thanh máu
-// var healthBarP1;
-// var healthBarP2;
-// var textHealth;
 var player1Death = 0;
 var player2Death = 0;
 //Âm thanh
@@ -44,14 +41,23 @@ MainGame.prototype = {
         map.addTilesetImage('wall_brick', 'wall_brick');
         map.addTilesetImage('water_1', 'water_1');
         map.addTilesetImage('trees', 'trees');
+        map.addTilesetImage('depnhat', 'depnhat');
+        map.addTilesetImage('basictiles', 'basictiles');
+        map.addTilesetImage('set', 'set');
         layer = map.createLayer('Tile Layer 1');
         layer.resizeWorld();
 
-        map.setCollisionBetween(1, 1);
+
+        // map.setCollisionBetween(15,16);
+        map.setCollision([15, 16, 375, 406, 422, 435],true);
 
         //Tạo group cho gạch
         wallbrickGroup = game.add.group();
         wallbrickGroup.enableBody = true;
+
+        waterGroup = game.add.group();
+        waterGroup.enableBody = true;
+
         //Tạo Group đạn
         bulletPlayer1Group = game.add.physicsGroup();
         bulletPlayer2Group = game.add.physicsGroup();
@@ -59,37 +65,25 @@ MainGame.prototype = {
         //Tạo Group player
         player1Group = game.add.physicsGroup();
         player2Group = game.add.physicsGroup();
-
-        //Tạo Group đạn
-        bulletPlayer1Group = game.add.physicsGroup();
-        bulletPlayer2Group = game.add.physicsGroup();
 
         //Group
         flag1 = game.add.physicsGroup();
         flag2 = game.add.physicsGroup();
 
-        //Tạo Group player
-        player1Group = game.add.physicsGroup();
-        player2Group = game.add.physicsGroup();
-
         //Tạo group cho nước
-        waterGroup = game.add.group();
-        waterGroup.enableBody = true;
+
         treeGroup = game.add.group();
         treeGroup.enableBody = true;
 
-        //Group health
-        // healthBarGroup = game.add.physicsGroup();
-
         //Tạo map từ Object trong tilemap và chuyển chúng vào group tương ứng
-        map.createFromObjects('Object Layer 1', 2, 'wall_brick', 0, true, false, wallbrickGroup);
-        map.createFromObjects('Object Layer 1', 3, 'water_1', 0, true, false, waterGroup);
-        map.createFromObjects('Object Layer 1', 7, 'trees', 0, true, false, treeGroup);
+        map.createFromObjects('Object Layer 1', 815, 'wall_brick', 0, true, false, wallbrickGroup);
+        map.createFromObjects('Object Layer 1', 691, 'water_1', 0, true, false, waterGroup);
+        map.createFromObjects('Object Layer 1', 17, 'trees', 0, true, false, treeGroup);
         wallbrickGroup.setAll('body.immovable', true);
         waterGroup.setAll('body.immovable', true);
         waterGroup.setAll('alpha', 0.9);
         treeGroup.setAll('body.immovable', true);
-        // treeGroup.setAll("alpha", 0.8);
+        treeGroup.setAll("alpha", 0.9);
         //Tạo âm thanh
 
         hit2 = game.add.audio('hit2');
@@ -103,17 +97,17 @@ MainGame.prototype = {
 
 
         //flag
-        flag1.create(896, 580, 'flag1');
+        flag1.create(904, 584, 'flag1');
         flag1.enableBody = true;
-        flag2.create(32, 580, 'flag2');
+        flag2.create(24, 584, 'flag2');
         flag2.enableBody = true;
 
         //Tao mang de luu nguoi choi
         players = [];
         players.push(
             new Player1Controller(
-                48,
-                48, {
+                40,
+                40, {
                     up: Phaser.Keyboard.W,
                     down: Phaser.Keyboard.S,
                     left: Phaser.Keyboard.A,
@@ -126,8 +120,8 @@ MainGame.prototype = {
         );
         players.push(
             new Player2Controller(
-                912,
-                48, {
+                920,
+                40, {
                     up: Phaser.Keyboard.UP,
                     down: Phaser.Keyboard.DOWN,
                     left: Phaser.Keyboard.LEFT,
@@ -360,11 +354,11 @@ function onBullet2HitPlayer1(bulletPlayer2Sprite, player1Sprite) {
 function tank1TakeFlag(flag1, player1Group) {
     flag1.kill();
     tank1Flag += 1;
-    flag1.reset(32, 32);
+    flag1.reset(23, 24);
 }
 
 function tank2TakeFlag(flag2, player2Group) {
     flag2.kill();
     tank2Flag += 1;
-    flag2.reset(896, 32);
+    flag2.reset(906, 22);
 }
