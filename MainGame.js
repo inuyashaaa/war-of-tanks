@@ -336,6 +336,8 @@ function onBulletHitWallBrick(bulletPlayerGroup, wallbrickGroup) {
 
 function onBulletHitLayer(bulletPlayerGroup, layer) {
     bulletPlayerGroup.kill();
+    if (sound)
+        bullethitwall.play();
 }
 
 function onBullet1HitPlayer2(bulletPlayer1Sprite, player2Sprite) {
