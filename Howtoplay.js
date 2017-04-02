@@ -6,8 +6,8 @@ var background;
 var titleScreen;
 Howtoplay.prototype = {
     preload: function(game) {
-        game.load.image('background', 'assets/background-howtoplay.png');
-        game.load.image('button1', 'assets/123456.png');
+        game.load.image('background', 'assets/images/background-howtoplay.png');
+        game.load.image('button1', 'assets/images/back-howtoplay.png');
 
     },
 

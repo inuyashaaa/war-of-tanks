@@ -19,8 +19,8 @@ Preloader.prototype = {
         game.load.image('player2', 'assets/images/up3_2.png');
         // game.load.spritesheet('boom_animation', 'assets/images/boom_animation.png', 32, 32);
         // game.load.spritesheet('tank_animation', 'assets/images/tank_animation.png', 32, 32);
-        game.load.image('bullet1', 'assets/bullet1.png');
-        game.load.image('bullet2', 'assets/bullet2.png');
+        game.load.image('bullet1', 'assets//images/bullet1.png');
+        game.load.image('bullet2', 'assets/images/bullet2.png');
         game.load.atlasJSONHash('assets', 'assets/assets.png', 'assets/assets.json');
 
         //load flag
@@ -38,7 +38,7 @@ Preloader.prototype = {
 
 
         //Load background-menu
-        game.load.image('background-pause','assets/background-pause.png');
+        game.load.image('background-pause','assets/images/background-pause.png');
     },
 
     create: function(game) {

@@ -6,10 +6,10 @@ var background;
 var titleScreen;
 MainMenu.prototype = {
     preload: function(game) {
-        game.load.image('background', 'assets/background-menu.png');
-        game.load.image('button', 'assets/start.png');
-        game.load.image('howtoplay','assets/howtoplay.png');
-        game.load.image('about','assets/about.png');
+        game.load.image('background', 'assets/images/background-menu.png');
+        game.load.image('button', 'assets/images/start.png');
+        game.load.image('howtoplay','assets/images/howtoplay.png');
+        game.load.image('about','assets/images/about.png');
         game.load.audio('state1','assets/sound/state1.mp3');
     },
 
