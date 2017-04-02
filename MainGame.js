@@ -127,7 +127,7 @@ MainGame.prototype = {
                     down: Phaser.Keyboard.DOWN,
                     left: Phaser.Keyboard.LEFT,
                     right: Phaser.Keyboard.RIGHT,
-                    fire: Phaser.Keyboard.NUMPAD_0,
+                    fire: Phaser.Keyboard.SHIFT,
                     cooldown: 0.3
                 },
                 game
