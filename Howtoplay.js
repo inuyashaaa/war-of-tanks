@@ -6,8 +6,8 @@ var background;
 var titleScreen;
 Howtoplay.prototype = {
     preload: function(game) {
-        game.load.image('background', 'assets/howtoplay-background.png');
-        game.load.image('button1', 'assets/back-howtoplay.png');
+        game.load.image('background', 'assets/background-howtoplay.png');
+        game.load.image('button1', 'assets/123456.png');
 
     },
 
@@ -16,7 +16,7 @@ Howtoplay.prototype = {
 
       game.add.image(0,0, 'background');
         // Tạo button Back 222x89
-        this.createButton(game, "", game.world.width-129, game.world.height-89, 222, 89,
+        this.createButton(game, "", game.world.width-121, game.world.height-82, 240, 70,
             function() {
                 this.state.start("MainMenu");
             });
