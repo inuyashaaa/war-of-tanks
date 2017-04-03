@@ -37,22 +37,22 @@ About.prototype = {
             fill:"#fff",
             align:"center"
           });
-          game.add.text(250,250, '- Phạm Huy Mạnh(Đẹp troai, gánh team)',{
+          game.add.text(250,250, '- Phạm Huy Mạnh(Mạnh mảnh mai)',{
             font:"30px Comic Sans MS",
             fill:"#fff",
             align:"center"
           });
-          game.add.text(250,300, '- Trần Quang Hải(Chuyên gia âm thanh)',{
+          game.add.text(250,300, '- Trần Quang Hải(Hải hôi háng)',{
             font:"30px Comic Sans MS",
             fill:"#fff",
             align:"center"
           });
-          game.add.text(250,350, '- Trịnh Văn Thắng(Nhà phát triển game)',{
+          game.add.text(250,350, '- Trịnh Văn Thắng(Thắng thối tha)',{
             font:"30px Comic Sans MS",
             fill:"#fff",
             align:"center"
           });
-          game.add.text(250,400, '- Lâm Văn Thư(Designer)',{
+          game.add.text(250,400, '- Lâm Văn Thư(...)',{
             font:"30px Comic Sans MS",
             fill:"#fff",
             align:"center"
