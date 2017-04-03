@@ -18,7 +18,8 @@ var players = [];
 var bullets = [];
 
 //Group item
-var itemGroup;
+var item1Group;
+var item2Group;
 var player1Death = 0;
 var player2Death = 0;
 //Âm thanh
@@ -79,7 +80,8 @@ MainGame.prototype = {
         treeGroup.enableBody = true;
 
         //Group item
-        itemGroup = game.add.physicsGroup();
+        item1Group = game.add.physicsGroup();
+        item2Group = game.add.physicsGroup();
 
         //Tạo map từ Object trong tilemap và chuyển chúng vào group tương ứng
         map.createFromObjects('Object Layer 1', 815, 'wall_brick', 0, true, false, wallbrickGroup);
@@ -112,16 +114,24 @@ MainGame.prototype = {
 
         //Tao item
         game.time.events.add(Phaser.Timer.SECOND * 12, function() {
-            itemGroup.create(462, 276, 'item1');
-            itemGroup.enableBody = true;
+            item1Group.create(462, 276, 'item1');
+            item1Group.enableBody = true;
+        });
+        game.time.events.add(Phaser.Timer.SECOND * 70, function() {
+            item1Group.create(318, 308, 'item1');
+            item1Group.enableBody = true;
+        });
+        game.time.events.add(Phaser.Timer.SECOND * 160, function() {
+            item1Group.create(462, 276, 'item1');
+            item1Group.enableBody = true;
         });
         game.time.events.add(Phaser.Timer.SECOND * 40, function() {
-            itemGroup.create(462, 276, 'item1');
-            itemGroup.enableBody = true;
+            item2Group.create(462, 388, 'item2');
+            item2Group.enableBody = true;
         });
-        game.time.events.add(Phaser.Timer.SECOND * 80, function() {
-            itemGroup.create(462, 276, 'item1');
-            itemGroup.enableBody = true;
+        game.time.events.add(Phaser.Timer.SECOND * 110, function() {
+            item2Group.create(750, 580, 'item2');
+            item2Group.enableBody = true;
         });
         //Tao mang de luu nguoi choi
         players = [];

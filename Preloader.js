@@ -5,7 +5,6 @@ Preloader.prototype = {
         //Tạo thanh Preload lúc đầu game
         game.time.advancedTiming = true;
         //Load Map bằng JSON
-        // game.load.tilemap('map', 'Assets/maps/map4.json', null, Phaser.Tilemap.TILED_JSON);
         game.load.tilemap('map', 'Assets/maps/map6.json', null, Phaser.Tilemap.TILED_JSON);
         game.load.image('wall_brick', 'Assets/wall_bricks.png');
         game.load.image('wall_steel', 'Assets/images/wall_steel.png');
@@ -18,8 +17,6 @@ Preloader.prototype = {
         //Load player
         game.load.image('player1', 'Assets/images/up3.png');
         game.load.image('player2', 'Assets/images/up3_2.png');
-        // game.load.spritesheet('boom_animation', 'Assets/images/boom_animation.png', 32, 32);
-        // game.load.spritesheet('tank_animation', 'Assets/images/tank_animation.png', 32, 32);
         game.load.image('bullet1', 'Assets/images/bullet1.png');
         game.load.image('bullet2', 'Assets/images/bullet2.png');
         game.load.atlasJSONHash('assets', 'Assets/assets.png', 'Assets/assets.json');
@@ -30,6 +27,7 @@ Preloader.prototype = {
 
         //Load Item
         game.load.image('item1', "Assets/images/powerup_tank.png");
+        game.load.image('item2', "Assets/images/powerup_timer.png");
 
         //Load âm thank
         game.load.audio('boom', 'Assets/sound/explosion_1.ogg');

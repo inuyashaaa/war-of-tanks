@@ -11,6 +11,7 @@ class PlayerController {
         this.spriteName = spriteName;
         this.sprite.health = 1;
         this.item1 = false;
+        this.item2 = false;
     }
     update() {
 
@@ -19,7 +20,7 @@ class PlayerController {
 
         //Kiem tra an item1(Item tang toc)
         if (this.item1 && this.spriteName == "player1") {
-            itemGroup.forEach(function(item) {
+            item1Group.forEach(function(item) {
                 item.kill();
             });
             this.configs.speed = 200;
@@ -28,7 +29,7 @@ class PlayerController {
             }, this);
         }
         if (this.item1 && this.spriteName == "player2") {
-            itemGroup.forEach(function(item) {
+            item1Group.forEach(function(item) {
                 item.kill();
             });
             this.configs.speed = 200;
@@ -36,6 +37,36 @@ class PlayerController {
                 this.configs.speed = 120;
             }, this);
         }
+
+        //Item 2. Nếu nguwoif chơi ăn được sẽ khiến đối phương không thể di chuyển trong 3s :))
+        if (this.item2 && this.spriteName == "player2") {
+            item2Group.forEach(function(item) {
+                item.kill();
+            });
+            player1Group.forEach(function(ship) {
+                ship.body.moves = false;
+            }, this);
+            this.game.time.events.add(Phaser.Timer.SECOND * 3, function() {
+                player1Group.forEach(function(ship) {
+                    ship.body.moves = true;
+                }, this);
+            }, this);
+        }
+        if (this.item2 && this.spriteName == "player1") {
+            item2Group.forEach(function(item) {
+                item.kill();
+            });
+            player2Group.forEach(function(ship) {
+                ship.body.moves = false;
+            }, this);
+            this.game.time.events.add(Phaser.Timer.SECOND * 3, function() {
+                player2Group.forEach(function(ship) {
+                    ship.body.moves = true;
+                }, this);
+            }, this);
+        }
+
+
         if (keyboard.isDown(this.configs.up)) {
             this.sprite.angle = 0;
             // this.sprite.animations.play('up');
@@ -70,7 +101,8 @@ class PlayerController {
             this.tryFire();
         }
 
-        this.item1 = this.game.physics.arcade.overlap(itemGroup, this.sprite);
+        this.item1 = this.game.physics.arcade.overlap(item1Group, this.sprite);
+        this.item2 = this.game.physics.arcade.overlap(item2Group, this.sprite);
     }
 
     tryFire() {
