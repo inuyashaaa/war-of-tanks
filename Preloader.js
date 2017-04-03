@@ -39,6 +39,7 @@ Preloader.prototype = {
         game.load.audio('bulletshot', 'Assets/sound/bulletshot.mp3');
         game.load.audio('bullethitwall', 'Assets/sound/bullethitwall.mp3');
         game.load.audio("soundbackground", 'Assets/sound/soundbackground.mp3');
+        game.load.audio("ahihi", 'Assets/sound/a_hi_hi.mp3');
 
 
         //Load background-menu

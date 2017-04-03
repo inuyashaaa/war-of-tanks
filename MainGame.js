@@ -99,8 +99,9 @@ MainGame.prototype = {
         bulletshot = game.add.audio('bulletshot');
         bullethitwall = game.add.audio('bullethitwall');
         soundbackground = game.add.audio('soundbackground');
-        soundbackground.volume = 0.07;
-        soundbackground.play('', 0, 0.07, true, true);
+        ahihi = game.add.audio('ahihi');
+        soundbackground.volume = 0.3;
+        soundbackground.play('', 0, 0.3, true, true);
 
 
         //flag
@@ -110,17 +111,17 @@ MainGame.prototype = {
         flag2.enableBody = true;
 
         //Tao item
-        game.time.events.add(Phaser.Timer.SECOND * 12, function () {
-          itemGroup.create(462, 276, 'item1');
-          itemGroup.enableBody = true;
+        game.time.events.add(Phaser.Timer.SECOND * 12, function() {
+            itemGroup.create(462, 276, 'item1');
+            itemGroup.enableBody = true;
         });
-        game.time.events.add(Phaser.Timer.SECOND * 40, function () {
-          itemGroup.create(462, 276, 'item1');
-          itemGroup.enableBody = true;
+        game.time.events.add(Phaser.Timer.SECOND * 40, function() {
+            itemGroup.create(462, 276, 'item1');
+            itemGroup.enableBody = true;
         });
-        game.time.events.add(Phaser.Timer.SECOND * 80, function () {
-          itemGroup.create(462, 276, 'item1');
-          itemGroup.enableBody = true;
+        game.time.events.add(Phaser.Timer.SECOND * 80, function() {
+            itemGroup.create(462, 276, 'item1');
+            itemGroup.enableBody = true;
         });
         //Tao mang de luu nguoi choi
         players = [];
@@ -378,12 +379,14 @@ function onBullet2HitPlayer1(bulletPlayer2Sprite, player1Sprite) {
 }
 
 function tank1TakeFlag(flag1, player1Group) {
+    ahihi.play();
     flag1.kill();
     tank1Flag += 1;
     flag1.reset(23, 24);
 }
 
 function tank2TakeFlag(flag2, player2Group) {
+    ahihi.play();
     flag2.kill();
     tank2Flag += 1;
     flag2.reset(906, 22);
