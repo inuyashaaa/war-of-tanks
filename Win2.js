@@ -1,8 +1,8 @@
 Win2 = function(game) {};
 Win2.prototype = {
     preload: function(game) {
-        game.load.image('background', 'assets/images/over2.png');
-        game.load.image('button', 'assets/images/Restart.png');
+        game.load.image('background', 'Assets/images/over2.png');
+        game.load.image('button', 'Assets/images/Restart.png');
     },
     create: function(game) {
         game.add.image(0, 0, 'background');

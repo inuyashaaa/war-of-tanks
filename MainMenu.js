@@ -6,11 +6,11 @@ var background;
 var titleScreen;
 MainMenu.prototype = {
     preload: function(game) {
-        game.load.image('background', 'assets/images/background-menu.png');
-        game.load.image('button', 'assets/images/start.png');
-        game.load.image('howtoplay','assets/images/howtoplay.png');
-        game.load.image('about','assets/images/About.png');
-        game.load.audio('state1','assets/sound/state1.mp3');
+        game.load.image('background', 'Assets/images/background-menu.png');
+        game.load.image('button', 'Assets/images/start.png');
+        game.load.image('howtoplay','Assets/images/howtoplay.png');
+        game.load.image('about','Assets/images/About.png');
+        game.load.audio('state1','Assets/sound/state1.mp3');
     },
 
     create: function(game) {

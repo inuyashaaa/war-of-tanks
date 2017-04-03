@@ -7,8 +7,8 @@ var background;
 var titleScreen;
 About.prototype = {
     preload: function(game) {
-        game.load.image('background', 'assets//images/background-about.png');
-        game.load.image('button', 'assets/images/back-about.png');
+        game.load.image('background', 'Assets/images/background-about.png');
+        game.load.image('button', 'Assets/images/back-about.png');
 
     },
 
