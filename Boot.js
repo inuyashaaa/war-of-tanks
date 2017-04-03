@@ -9,8 +9,8 @@ Boot.prototype = {
     },
     preloader: function(game) {},
     create: function(game) {
-        game.scale.minWidth = 800;
-        game.scale.minHeight = 600;
+        game.scale.minWidth = 480;
+        game.scale.minHeight = 320;
         game.scale.maxWidth = 960;
         game.scale.maxHeight = 640;
         game.scale.pageAlignHorizontally = true;

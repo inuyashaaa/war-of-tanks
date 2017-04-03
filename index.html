@@ -28,7 +28,8 @@
 <body>
     <script type="text/javascript">
         window.onload = function() {
-            var game = new Phaser.Game(960, 640, Phaser.CANVAS, '');
+            var game = new Phaser.Game(960, 640, Phaser.AUTO, '');
+            
             game.state.add('Boot', Boot);
             game.state.add('Preloader', Preloader);
             game.state.add('MainMenu', MainMenu);
