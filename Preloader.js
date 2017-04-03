@@ -4,7 +4,6 @@ Preloader.prototype = {
     preload: function(game) {
         //Tạo thanh Preload lúc đầu game
         game.time.advancedTiming = true;
-
         //Load Map bằng JSON
         // game.load.tilemap('map', 'Assets/maps/map4.json', null, Phaser.Tilemap.TILED_JSON);
         game.load.tilemap('map', 'Assets/maps/map6.json', null, Phaser.Tilemap.TILED_JSON);
@@ -28,6 +27,9 @@ Preloader.prototype = {
         //load flag
         game.load.image('flag1', 'Assets/images/bang.png');
         game.load.image('flag2', 'Assets/images/bang2.png');
+
+        //Load Item
+        game.load.image('item1', "Assets/images/powerup_tank.png");
 
         //Load âm thank
         game.load.audio('boom', 'Assets/sound/explosion_1.ogg');

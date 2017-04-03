@@ -17,6 +17,8 @@ var player2Group;
 var players = [];
 var bullets = [];
 
+//Group item
+var itemGroup;
 var player1Death = 0;
 var player2Death = 0;
 //Âm thanh
@@ -76,6 +78,9 @@ MainGame.prototype = {
         treeGroup = game.add.group();
         treeGroup.enableBody = true;
 
+        //Group item
+        itemGroup = game.add.physicsGroup();
+
         //Tạo map từ Object trong tilemap và chuyển chúng vào group tương ứng
         map.createFromObjects('Object Layer 1', 815, 'wall_brick', 0, true, false, wallbrickGroup);
         map.createFromObjects('Object Layer 1', 691, 'water_1', 0, true, false, waterGroup);
@@ -93,8 +98,9 @@ MainGame.prototype = {
         bullethitplayer = game.add.audio('bullethitplayer');
         bulletshot = game.add.audio('bulletshot');
         bullethitwall = game.add.audio('bullethitwall');
-        // soundbackground = game.add.audio('soundbackground');
-        // soundbackground.play();
+        soundbackground = game.add.audio('soundbackground');
+        soundbackground.volume = 0.07;
+        soundbackground.play('', 0, 0.07, true, true);
 
 
         //flag
@@ -103,6 +109,19 @@ MainGame.prototype = {
         flag2.create(24, 584, 'flag2');
         flag2.enableBody = true;
 
+        //Tao item
+        game.time.events.add(Phaser.Timer.SECOND * 12, function () {
+          itemGroup.create(462, 276, 'item1');
+          itemGroup.enableBody = true;
+        });
+        game.time.events.add(Phaser.Timer.SECOND * 40, function () {
+          itemGroup.create(462, 276, 'item1');
+          itemGroup.enableBody = true;
+        });
+        game.time.events.add(Phaser.Timer.SECOND * 80, function () {
+          itemGroup.create(462, 276, 'item1');
+          itemGroup.enableBody = true;
+        });
         //Tao mang de luu nguoi choi
         players = [];
         players.push(
@@ -114,7 +133,8 @@ MainGame.prototype = {
                     left: Phaser.Keyboard.A,
                     right: Phaser.Keyboard.D,
                     fire: Phaser.Keyboard.SPACEBAR,
-                    cooldown: 0.3
+                    cooldown: 0.25,
+                    speed: 120
                 },
                 game
             )
@@ -128,7 +148,8 @@ MainGame.prototype = {
                     left: Phaser.Keyboard.LEFT,
                     right: Phaser.Keyboard.RIGHT,
                     fire: Phaser.Keyboard.ENTER,
-                    cooldown: 0.3
+                    cooldown: 0.25,
+                    speed: 120
                 },
                 game
             )
@@ -148,13 +169,6 @@ MainGame.prototype = {
             menu = game.add.sprite(game.world.centerX, game.world.centerY, 'background-pause');
             menu.anchor.setTo(0.5, 0.5);
 
-            // And a label to illustrate which menu item was chosen. (This is not necessary)
-
-
-            // choiseLabel = game.add.text(game.world.centerX - 420, game.world.centerY - 250, 'WAR OF TANKS', {
-            //     font: "bold 60px Algerian",
-            //     fill: '#1f1f2e'
-            // });
             continues = game.add.text(game.world.centerX - 310, game.world.centerY - 150, 'CONTINUE', {
                 font: 'bold 40px Algerian',
                 fill: '#fff',
@@ -215,9 +229,9 @@ MainGame.prototype = {
         }
         window.onkeydown = function(event) {
             if (event.keyCode == "K".charCodeAt(0)) {
-              sound=!sound;
+                sound = !sound;
             }
-          };
+        };
 
     },
 
@@ -299,6 +313,7 @@ MainGame.prototype = {
                 tank1Flag = 0;
             }
         }
+
         if (player2Death == 1) {
             player2Death = 0;
             game.time.events.add(Phaser.Timer.SECOND * 2, function() {
@@ -320,6 +335,7 @@ MainGame.prototype = {
         }
         game.physics.arcade.overlap(flag1, player1Group, tank1TakeFlag);
         game.physics.arcade.overlap(flag2, player2Group, tank2TakeFlag);
+
     },
     render: function(game) {
         game.debug.body(players);
@@ -344,7 +360,6 @@ function onBullet1HitPlayer2(bulletPlayer1Sprite, player2Sprite) {
     bulletPlayer1Sprite.kill();
     player2Sprite.damage(1);
     if (!player2Sprite.alive) {
-
         player2Death = 1;
         if (sound)
             bullethitplayer.play();
@@ -354,7 +369,6 @@ function onBullet1HitPlayer2(bulletPlayer1Sprite, player2Sprite) {
 function onBullet2HitPlayer1(bulletPlayer2Sprite, player1Sprite) {
     bulletPlayer2Sprite.kill();
     player1Sprite.kill();
-    // player1Sprite.reset(48, 48);
     if (!player1Sprite.alive) {
 
         player1Death = 1;

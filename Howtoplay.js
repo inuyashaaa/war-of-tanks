@@ -76,7 +76,7 @@ Howtoplay.prototype = {
             fill: '#fff',
             align: 'left'
         });
-        game.add.text(70, 480,'                         SPACEBAR : bắn                  0: bắn', {
+        game.add.text(70, 480,'                         SPACEBAR : bắn                  Enter: bắn', {
             font: '20px Comic Sans MS',
             fill: '#fff',
             align: 'left'
