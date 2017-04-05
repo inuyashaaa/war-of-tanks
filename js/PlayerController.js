@@ -2,8 +2,12 @@ class PlayerController {
     constructor(x, y, configs, spriteName, physicsGroup, game) {
         this.sprite = physicsGroup.create(x, y, spriteName);
         this.sprite.anchor = new Phaser.Point(0.5, 0.5);
+        this.sprite.animations.add('down', [0, 1, 2, 3], 5, true);
+        this.sprite.animations.add('left', [4, 5, 6, 7], 5, true);
+        this.sprite.animations.add('right', [8, 9, 10, 11], 5, true);
+        this.sprite.animations.add('up', [12, 13, 14, 15], 5, true);
         this.sprite.body.collideWorldBounds = true;
-        this.sprite.body.setSize(26, 26, 0, 0);
+        // this.sprite.body.setSize(29, 26, 0, 0);
         this.configs = configs;
         this.timeSinceLastFire = 0;
         this.game = game;
@@ -12,6 +16,7 @@ class PlayerController {
         this.sprite.health = 1;
         this.item1 = false;
         this.item2 = false;
+        this.angle = 0;
     }
     update() {
 
@@ -68,28 +73,28 @@ class PlayerController {
 
 
         if (keyboard.isDown(this.configs.up)) {
-            this.sprite.angle = 0;
-            // this.sprite.animations.play('up');
+            this.angle = 0;
+            this.sprite.animations.play('up');
             this.sprite.body.velocity.y = -this.configs.speed;
         } else if (keyboard.isDown(this.configs.down)) {
-            this.sprite.angle = -180;
-            // this.sprite.animations.play('down');
+            this.angle = -180;
+            this.sprite.animations.play('down');
             this.sprite.body.velocity.y = this.configs.speed;
         } else if (keyboard.isDown(this.configs.left)) {
-            this.sprite.angle = -90;
-            // this.sprite.animations.play('left');
+            this.angle = -90;
+            this.sprite.animations.play('left');
             this.sprite.body.velocity.x = -this.configs.speed;
 
         } else if (keyboard.isDown(this.configs.right)) {
-            this.sprite.angle = 90;
-            // this.sprite.animations.play('right');
+            this.angle = 90;
+            this.sprite.animations.play('right');
             this.sprite.body.velocity.x = this.configs.speed;
         }
-        if (this.sprite.angle == -180) {
+        if (this.angle == -180) {
             this.point = new Phaser.Point(0, 1);
-        } else if (this.sprite.angle == -90) {
+        } else if (this.angle == -90) {
             this.point = new Phaser.Point(-1, 0);
-        } else if (this.sprite.angle == 90) {
+        } else if (this.angle == 90) {
             this.point = new Phaser.Point(1, 0);
         } else {
             this.point = new Phaser.Point(0, -1);
@@ -121,7 +126,7 @@ class PlayerController {
             new BulletPlayer1Controller(
                 this.sprite.position,
                 direction,
-                this.sprite.angle
+                this.angle
             );
         }
 
@@ -129,7 +134,7 @@ class PlayerController {
             new BulletPlayer2Controller(
                 this.sprite.position,
                 direction,
-                this.sprite.angle
+                this.angle
             );
         }
     }

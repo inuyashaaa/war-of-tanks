@@ -15,8 +15,9 @@ Preloader.prototype = {
         game.load.image('set', 'Assets/set.gif');
 
         //Load player
-        game.load.image('player1', 'Assets/images/up3.png');
-        game.load.image('player2', 'Assets/images/up3_2.png');
+        // game.load.image('player1', 'Assets/images/up3.png');
+        game.load.spritesheet('player2', 'Assets/tank2.png', 31, 31);
+        game.load.spritesheet('player1', 'Assets/tank1.png', 31, 31);
         game.load.image('bullet1', 'Assets/images/bullet1.png');
         game.load.image('bullet2', 'Assets/images/bullet2.png');
         game.load.atlasJSONHash('assets', 'Assets/assets.png', 'Assets/assets.json');
